@@ -1,0 +1,54 @@
+// Custom.scss
+// Include parts of Bootstrap
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "../../node_modules/bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+
+// 3. Include remainder of required Bootstrap stylesheets
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+
+// 4. Include any optional Bootstrap components as you like
+@import "../../node_modules/bootstrap/scss/root";
+@import "../../node_modules/bootstrap/scss/reboot";
+@import "../../node_modules/bootstrap/scss/type";
+@import "../../node_modules/bootstrap/scss/images";
+@import "../../node_modules/bootstrap/scss/containers";
+@import "../../node_modules/bootstrap/scss/grid";
+
+// 5. Add additional custom code here
+
+
+// ====================================================================
+
+// It's important to keep this order of import below to avoid errors
+
+// 1. Utils
+@import "./utils/breakpoints";
+@import "./utils/variables";
+@import "./utils/functions";
+@import "./utils/mixins";
+
+// 2. Vendors
+@import "./vendors/reset";
+
+// 3. Base
+@import "./base/base";
+@import "./base/fonts";
+@import "./base/typography";
+
+
+// 4. Components
+@import "./components/loading-spinner";
+@import "./components/button";
+
+// 5. Layout
+@import "./layouts/header";
+@import "./layouts/footer";
+
+// 6. Pages (code blocks that only apply to a single page)
+@import "./pages/home";
+
+// 7. Themes (custom style for example for Christmas, summer or Halloween)

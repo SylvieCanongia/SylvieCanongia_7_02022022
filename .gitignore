@@ -1,2 +1,4 @@
-/docs
-/node_modules
+.parcel-cache
+dist
+docs
+node_modules

@@ -2,18 +2,21 @@
   "name": "les_petits_plats",
   "version": "1.0.0",
   "description": "A cooking recipe website",
-  "main": "index.html",
   "repository": "git@github.com:SylvieCanongia/SylvieCanongia_7_02022022.git",
   "author": "Sylvie Canongia <sylvie.canongia.dev@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "parcel index.html",
-    "build-dev": "parcel build ./index.html --no-minify --public-url ./",
-    "build": "parcel build index.html",
+    "dev": "parcel ./src/index.html",
+    "build-dev": "parcel build ./src/index.html --no-minify --public-url ./",
+    "build": "parcel build ./src/index.html",
     "push-gh-pages": "push-dir --dir=dist --branch=gh-pages --cleanup --verbose"
   },
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.2.1",
     "parcel": "^2.2.1"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.2",
+    "bootstrap": "^5.1.3"
   }
-  
 }

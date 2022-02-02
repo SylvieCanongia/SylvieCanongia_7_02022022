@@ -1,0 +1,47 @@
+// To be able to use math.div
+@use "sass:math";
+
+/* ====== COLOR PALETTE ====== */
+$col-black: hsl(0deg, 0%, 0%);
+$col-white: hsl(0deg, 0%, 100%);
+
+/* ====== TYPOGRAPHY ====== */
+$font-size-base: 1em;
+$font-size-normal: 1rem;
+
+/* ====== FONT WEIGHT ====== */
+$font-weight-thin: 100;
+$font-weight-regular: 400;
+$font-weight-bold: 700;
+
+/* ====== FONT-FAMILY ====== */
+$font-family-title: 'Shrikhand',
+cursive;
+$font-family-text: 'Roboto',
+sans-serif;
+
+/* ====== SPACING ====== */
+$space-base: 8px;
+$space-XS: 16px;
+$space-S: 24px;
+$space-M: 32px;
+$space-L: 40px;
+$space-XL: 48px;
+
+/* ====== SIZES (HEIGHT, WIDTH) ====== */
+$size-XXS: 8px;
+$size-XS: 16px;
+$size-S: 24px;
+$size-M: 32px;
+$size-L: 40px;
+$size-XL: 48px;
+$size-XXL: 72px;
+
+/* ====== RADIUS ====== */
+
+$radius-S: 5px;
+$radius-M: 16px;
+
+/* ====== BREAKPOINTS ====== */
+
+// See in the file 'utils/_breakpoints.scss'

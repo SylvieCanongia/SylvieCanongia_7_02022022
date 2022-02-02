@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+    color: $col-black;
+}
+
+html,
+body {
+    height: 100%;
+    // font-family: $font-family-text;
+    // font-size: $font-size-base;
+    line-height: 1.2;
+    font-weight: 400; // regular
+}
+
+/* disable the instant scrolling for users that have configured
+their system/browser to reduce animations and movements,
+due to vestibular system disorders  */
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+a {
+    text-decoration: none;
+}
