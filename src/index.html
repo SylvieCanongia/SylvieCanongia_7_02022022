@@ -5,10 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta
-      name="description"
-      content="Les petits plats"
-    />
+    <meta name="description" content="Les petits plats" />
     <meta name="keywords" content="" />
     <meta name="author" content="Sylvie Canongia" />
     <meta name="copyright" content="Sylvie Canongia" />
@@ -22,6 +19,12 @@
     ></script>
 
     <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- CSS / SCSS Files -->
     <link rel="stylesheet" href="./../assets/scss/index.scss" />
@@ -29,19 +32,42 @@
 
   <body>
     <!-- ======= Header ======= -->
+
     <header class="header">
-        <h1>Les petits plats</h1>
+      <div class="header__container container text-center p-3 mt-3">
+        <div class="header__logo">
+          <img src="./../assets/images/logo.jpg" alt="" />
+        </div>
+        <h1 class="logo-title">Les petits plats</h1>
+      </div>
     </header>
     <!-- =======End header ======= -->
 
     <!-- ======= Main ======= -->
     <main class="main-home">
+      <section class="search">
+        <div class="container">
+          <form class="search__form">
+            <div class="input-group mb-3">
+              <input
+                class="form-control"
+                type="search"
+                placeholder="Rechercher une recette"
+                aria-label="Search"
+              />
+              <span class="input-group-text"
+                ><img src="./../assets/images/magnifying-glass.png" alt=""
+              /></span>
+            </div>
+          </form>
+        </div>
+      </section>
+      <section class="recipes"></section>
     </main>
     <!-- ======= End Main ======= -->
 
     <!-- ======= Footer ======= -->
-    <footer class="footer">
-    </footer>
+    <footer class="footer"></footer>
     <!-- ======= Footer ======= -->
 
     <script type="module" src="./index.js"></script>
