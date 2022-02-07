@@ -2,8 +2,16 @@
 @use "sass:math";
 
 /* ====== COLOR PALETTE ====== */
-$col-black: hsl(0deg, 0%, 0%);
-$col-white: hsl(0deg, 0%, 100%);
+$color-black: hsl(0deg, 0%, 0%);
+$color-white: hsl(0deg, 0%, 100%);
+$color-blue: hsl(215, 88%, 57%);
+$color-green: hsl(152, 60%, 63%);
+$color-red: hsl(6, 81%, 63%);
+$color-grey-img: hsl(0, 7%, 76%);
+$color-grey-searchbar: hsl(0, 0%, 90%);
+$color-placeholder: hsl(0, 3%, 70%);
+
+$color-logo: hsl(0, 58%, 56%);
 
 /* ====== TYPOGRAPHY ====== */
 $font-size-base: 1em;
@@ -15,8 +23,9 @@ $font-weight-regular: 400;
 $font-weight-bold: 700;
 
 /* ====== FONT-FAMILY ====== */
-$font-family-title: 'Shrikhand',
-cursive;
+$font-family-logo: 'DM Sans', sans-serif;
+$font-family-title: 'Lato', sans-serif;
+$font-family-ingredients: 'Lato', sans-serif;
 $font-family-text: 'Roboto',
 sans-serif;
 
@@ -39,8 +48,10 @@ $size-XXL: 72px;
 
 /* ====== RADIUS ====== */
 
+$radius-button: 0.2rem;
 $radius-S: 5px;
-$radius-M: 16px;
+$radius-M: 8px;
+$radius-L: 16px
 
 /* ====== BREAKPOINTS ====== */
 

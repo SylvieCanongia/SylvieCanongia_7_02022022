@@ -18,12 +18,14 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Lato:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+    <!-- Bootstrap icons -->
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap"
       rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"
     />
 
     <!-- CSS / SCSS Files -->
@@ -38,31 +40,301 @@
         <div class="header__logo">
           <img src="./../assets/images/logo.jpg" alt="" />
         </div>
-        <h1 class="logo-title">Les petits plats</h1>
+        <h1 class="logo__text">Les petits plats</h1>
       </div>
     </header>
     <!-- =======End header ======= -->
 
     <!-- ======= Main ======= -->
     <main class="main-home">
+
+      <!-- Search section -->
       <section class="search">
         <div class="container">
-          <form class="search__form">
-            <div class="input-group mb-3">
-              <input
-                class="form-control"
-                type="search"
-                placeholder="Rechercher une recette"
-                aria-label="Search"
-              />
-              <span class="input-group-text"
-                ><img src="./../assets/images/magnifying-glass.png" alt=""
-              /></span>
+
+          <!-- Search bar -->
+          <div class="search__bar row">
+            <form class="search__form">
+              <div class="input-group mb-3">
+                <input
+                  class="form-control"
+                  type="search"
+                  placeholder="Rechercher une recette"
+                  aria-label="Search"
+                />
+                <span class="input-group-text">
+                  <i class="bi bi-search" aria-label="Search"
+                  role="img"></i>
+                  </span>
+              </div>
+            </form>
+          </div>
+          <!-- End serach bar -->
+
+          <!-- Dropdowns -->
+          <div class="search__dropdowns row pb-3">
+            <div class="tags">
+              <div class="tag d-flex justify-content-beetween">Coco<i class="bi bi-x-circle"></i></div>
             </div>
-          </form>
+            <div class="dropdown" aria-label="Recherche par tag">
+              <button
+                class="btn btn__ingredients btn-sm dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Ingrédients
+              </button>
+              <ul
+                class="btn__ingredients__list dropdown-menu dropdown-menu-dark"
+                aria-labelledby="dropdownMenuButton"
+              >
+                <li>
+                  <a class="dropdown-item active" href="#">Lait de coco</a>
+                </li>
+                <li><a class="dropdown-item" href="#">Sucre</a></li>
+                <li><a class="dropdown-item" href="#">Concombre</a></li>
+                <li><a class="dropdown-item" href="#">Citron Vert</a></li>
+                <li><a class="dropdown-item" href="#">Oignon</a></li>
+                <li><a class="dropdown-item" href="#">Riz Blanc</a></li>
+                <li><a class="dropdown-item" href="#">Maïs</a></li>
+                <li><a class="dropdown-item" href="#">Crème fraîche</a></li>
+                <li><a class="dropdown-item" href="#">Pomme</a></li>
+                <li><a class="dropdown-item" href="#">Chocolat au lait</a></li>
+                <li><a class="dropdown-item" href="#">Jus de citron</a></li>
+                <li><a class="dropdown-item" href="#">Glaçon</a></li>
+              </ul>
+
+              <button
+                class="btn btn__appareils btn-sm dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Appareils
+              </button>
+              <ul
+                class="btn__appareils__list dropdown-menu dropdown-menu-dark"
+                aria-labelledby="dropdownMenuButton"
+              >
+                <li>
+                  <a class="dropdown-item active" href="#">Lait de coco</a>
+                </li>
+                <li><a class="dropdown-item" href="#">Sucre</a></li>
+                <li><a class="dropdown-item" href="#">Concombre</a></li>
+                <li><a class="dropdown-item" href="#">Citron Vert</a></li>
+                <li><a class="dropdown-item" href="#">Oignon</a></li>
+                <li><a class="dropdown-item" href="#">Riz Blanc</a></li>
+                <li><a class="dropdown-item" href="#">Maïs</a></li>
+                <li><a class="dropdown-item" href="#">Crème fraîche</a></li>
+                <li><a class="dropdown-item" href="#">Pomme</a></li>
+                <li><a class="dropdown-item" href="#">Chocolat au lait</a></li>
+                <li><a class="dropdown-item" href="#">Jus de citron</a></li>
+                <li><a class="dropdown-item" href="#">Glaçon</a></li>
+              </ul>
+
+              <button
+                class="btn btn__ustensiles btn-sm dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Ustensiles
+              </button>
+              <ul
+                class="btn__ustensiles__list dropdown-menu dropdown-menu-dark"
+                aria-labelledby="dropdownMenuButton"
+              >
+                <li>
+                  <a class="dropdown-item active" href="#">Lait de coco</a>
+                </li>
+                <li><a class="dropdown-item" href="#">Sucre</a></li>
+                <li><a class="dropdown-item" href="#">Concombre</a></li>
+                <li><a class="dropdown-item" href="#">Citron Vert</a></li>
+                <li><a class="dropdown-item" href="#">Oignon</a></li>
+                <li><a class="dropdown-item" href="#">Riz Blanc</a></li>
+                <li><a class="dropdown-item" href="#">Maïs</a></li>
+                <li><a class="dropdown-item" href="#">Crème fraîche</a></li>
+                <li><a class="dropdown-item" href="#">Pomme</a></li>
+                <li><a class="dropdown-item" href="#">Chocolat au lait</a></li>
+                <li><a class="dropdown-item" href="#">Jus de citron</a></li>
+                <li><a class="dropdown-item" href="#">Glaçon</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- End dropdowns -->
+
         </div>
       </section>
-      <section class="recipes"></section>
+      <!-- End search section -->
+
+      <!-- Recipes section -->
+      <section class="recipes">
+        <div class="recipes__container container">
+          <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+
+            <!-- Card -->
+            <div class="col">
+              <div class="recipe card h-100">
+                <img src="#" class=" recipe__img card-img-top" alt="" />
+                <div class="card-body">
+                  <div class="recipe__heading d-flex flex-row justify-content-between">
+                    <h5 class="card-title">Limonade de coco</h5>
+                    <div d-flex>
+                      <i class="recipe__iconClock bi bi-clock" role="img" aria-label="Time"></i>
+                      <span class="recipe__time align-self-start">10 min</span>
+                    </div>
+                  </div>
+                  <div class="recipe__content row">
+                    <ul class="recipe__ingredients list-unstyled col-6">
+                      <li><span class="ingredient__text">Lait de coco:</span> 400ml</li>
+                      <li><span class="ingredient__text">Jus de citron:</span> 2</li>
+                      <li><span class="ingredient__text">Crème de coco:</span> 4 cuillères</li>
+                      <li><span class="ingredient__text">Sucre:</span> 20g</li>
+                      <li><span class="ingredient__text">Glaçons:</span> 2</li>
+                    </ul>
+                    <p class="recipe__desc card-text col-6">
+                      Mettre les glaçons à votre goût dans le blender, ajouter
+                      le lait, la crème de coco, le jus de 2 citrons et le
+                      sucre. Mixer jusqu'à avoir la consistence désirée
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End card -->
+
+            <!-- Card -->
+            <div class="col">
+              <div class="recipe card h-100">
+                <img src="#" class=" recipe__img card-img-top" alt="" />
+                <div class="card-body">
+                  <div class="recipe__heading d-flex flex-row justify-content-between">
+                    <h5 class="card-title">Limonade de coco</h5>
+                    <div d-flex>
+                      <i class="recipe__iconClock bi bi-clock" role="img" aria-label="Time"></i>
+                      <span class="recipe__time align-self-start">10 min</span>
+                    </div>
+                  </div>
+                  <div class="recipe__content row">
+                    <ul class="recipe__ingredients list-unstyled col-6">
+                      <li><span class="ingredient__text">Lait de coco:</span> 400ml</li>
+                      <li><span class="ingredient__text">Jus de citron:</span> 2</li>
+                      <li><span class="ingredient__text">Crème de coco:</span> 4 cuillères</li>
+                      <li><span class="ingredient__text">Sucre:</span> 20g</li>
+                      <li><span class="ingredient__text">Glaçons:</span> 2</li>
+                    </ul>
+                    <p class="recipe__desc card-text col-6">
+                      Mettre les glaçons à votre goût dans le blender, ajouter
+                      le lait, la crème de coco, le jus de 2 citrons et le
+                      sucre. Mixer jusqu'à avoir la consistence désirée
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End card -->
+
+            <!-- Card -->
+            <div class="col">
+              <div class="recipe card h-100">
+                <img src="#" class=" recipe__img card-img-top" alt="" />
+                <div class="card-body">
+                  <div class="recipe__heading d-flex flex-row justify-content-between">
+                    <h5 class="card-title">Limonade de coco</h5>
+                    <div d-flex>
+                      <i class="recipe__iconClock bi bi-clock" role="img" aria-label="Time"></i>
+                      <span class="recipe__time align-self-start">10 min</span>
+                    </div>
+                  </div>
+                  <div class="recipe__content row">
+                    <ul class="recipe__ingredients list-unstyled col-6">
+                      <li><span class="ingredient__text">Lait de coco:</span> 400ml</li>
+                      <li><span class="ingredient__text">Jus de citron:</span> 2</li>
+                      <li><span class="ingredient__text">Crème de coco:</span> 4 cuillères</li>
+                      <li><span class="ingredient__text">Sucre:</span> 20g</li>
+                      <li><span class="ingredient__text">Glaçons:</span> 2</li>
+                    </ul>
+                    <p class="recipe__desc card-text col-6">
+                      Mettre les glaçons à votre goût dans le blender, ajouter
+                      le lait, la crème de coco, le jus de 2 citrons et le
+                      sucre. Mixer jusqu'à avoir la consistence désirée
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End card -->
+
+            <!-- Card -->
+            <div class="col">
+              <div class="recipe card h-100">
+                <img src="#" class=" recipe__img card-img-top" alt="" />
+                <div class="card-body">
+                  <div class="recipe__heading d-flex flex-row justify-content-between">
+                    <h5 class="card-title">Limonade de coco</h5>
+                    <div d-flex>
+                      <i class="recipe__iconClock bi bi-clock" role="img" aria-label="Time"></i>
+                      <span class="recipe__time align-self-start">10 min</span>
+                    </div>
+                  </div>
+                  <div class="recipe__content row">
+                    <ul class="recipe__ingredients list-unstyled col-6">
+                      <li><span class="ingredient__text">Lait de coco:</span> 400ml</li>
+                      <li><span class="ingredient__text">Jus de citron:</span> 2</li>
+                      <li><span class="ingredient__text">Crème de coco:</span> 4 cuillères</li>
+                      <li><span class="ingredient__text">Sucre:</span> 20g</li>
+                      <li><span class="ingredient__text">Glaçons:</span> 2</li>
+                    </ul>
+                    <p class="recipe__desc card-text col-6">
+                      Mettre les glaçons à votre goût dans le blender, ajouter
+                      le lait, la crème de coco, le jus de 2 citrons et le
+                      sucre. Mixer jusqu'à avoir la consistence désirée
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End card -->
+
+            <!-- Card -->
+            <div class="col">
+              <div class="recipe card h-100">
+                <img src="#" class=" recipe__img card-img-top" alt="" />
+                <div class="card-body">
+                  <div class="recipe__heading d-flex flex-row justify-content-between">
+                    <h5 class="card-title">Limonade de coco</h5>
+                    <div d-flex>
+                      <i class="recipe__iconClock bi bi-clock" role="img" aria-label="Time"></i>
+                      <span class="recipe__time align-self-start">10 min</span>
+                    </div>
+                  </div>
+                  <div class="recipe__content row">
+                    <ul class="recipe__ingredients list-unstyled col-6">
+                      <li><span class="ingredient__text">Lait de coco:</span> 400ml</li>
+                      <li><span class="ingredient__text">Jus de citron:</span> 2</li>
+                      <li><span class="ingredient__text">Crème de coco:</span> 4 cuillères</li>
+                      <li><span class="ingredient__text">Sucre:</span> 20g</li>
+                      <li><span class="ingredient__text">Glaçons:</span> 2</li>
+                    </ul>
+                    <p class="recipe__desc card-text col-6">
+                      Mettre les glaçons à votre goût dans le blender, ajouter
+                      le lait, la crème de coco, le jus de 2 citrons et le
+                      sucre. Mixer jusqu'à avoir la consistence désirée
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End card -->
+
+          </div>
+        </div>
+      </section>
+      <!-- End recipes section -->
     </main>
     <!-- ======= End Main ======= -->
 

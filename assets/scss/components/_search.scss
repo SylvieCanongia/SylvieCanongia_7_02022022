@@ -1,10 +1,21 @@
-.logo-title {
-  color: #D04F4F;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 36px;
-}
+.search {
+  &__bar {
+    .form-control {
+      background: $color-grey-searchbar;
+      border: $color-grey-searchbar;
+      height: $space-base * 7;
+    }
 
-.form-control {
-  background: $gray-200;
-  border-right: none;
+    .form-control::placeholder {
+      color: $color-placeholder;
+    }
+
+    .input-group-text {
+      border: $color-grey-searchbar;
+      background-color: $color-grey-searchbar;
+      .bi::before {
+        font-weight: $font-weight-bold !important;
+      }
+    }
+  }
 }

@@ -1,13 +1,11 @@
 * {
     box-sizing: border-box;
-    color: $col-black;
 }
 
 html,
 body {
     height: 100%;
-    // font-family: $font-family-text;
-    // font-size: $font-size-base;
+    font-size: $font-size-base;
     line-height: 1.2;
     font-weight: 400; // regular
 }

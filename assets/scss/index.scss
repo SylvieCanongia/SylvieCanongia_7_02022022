@@ -5,6 +5,8 @@
 @import "../../node_modules/bootstrap/scss/functions";
 
 // 2. Include any default variable overrides here
+@import "./utils/overrides-bootstrap";
+
 
 // 3. Include remainder of required Bootstrap stylesheets
 @import "../../node_modules/bootstrap/scss/variables";
@@ -73,7 +75,9 @@
 // 4. Components
 @import "./components/loading-spinner";
 @import "./components/button";
+@import "./components/cards";
 @import "./components/search";
+@import "./components/dropdowns";
 
 // 5. Layout
 @import "./layouts/header";

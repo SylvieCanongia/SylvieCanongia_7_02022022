@@ -1,0 +1,70 @@
+// 4 grid tiers :
+// Make sure to set grid values in px (not rem, em, or %).
+// $grid-breakpoints: (
+//   xs: 0,
+//   sm: 480px,
+//   md: 768px,
+//   lg: 1024px
+// );
+
+// $container-max-widths: (
+//   sm: 420px,
+//   md: 720px,
+//   lg: 960px
+// );
+
+// DROPDOWS
+// Override the active items bg color
+
+$color-blue: hsl(215, 88%, 57%);
+$color-green: hsl(152, 60%, 63%);
+$color-red: hsl(6, 81%, 63%);
+
+$color-ingredients-bg-active: darken($color-blue, 10%);
+$color-appareils-bg-active: darken($color-green, 10%);
+$color-ustensiles-bg-active: darken($color-red, 10%);
+
+$dropdown-bg-active: (
+  'ingredients': (
+    'bg-active': $color-ingredients-bg-active
+  ),
+  'appareils': (
+    'bg-active': $color-appareils-bg-active
+  ),
+  'ustensiles': (
+    'bg-active': $color-ustensiles-bg-active
+  )
+);
+
+@mixin dropdown-link-active-bg($state) {
+  $palette: map-get($dropdown-bg-active , $state );
+  $dropdown-dark-link-active-bg: map-get($palette, 'bg-active' );
+  background: $dropdown-dark-link-active-bg;
+}
+
+.btn__ingredients__list {
+  a.dropdown-item {
+    &.active,
+    &:active {
+      @include dropdown-link-active-bg('ingredients');
+    }
+  }
+}
+
+.btn__appareils__list {
+  a.dropdown-item {
+    &.active,
+    &:active {
+      @include dropdown-link-active-bg('appareils');
+    }
+  }
+}
+
+.btn__ustensiles__list {
+  a.dropdown-item {
+    &.active,
+    &:active {
+    @include dropdown-link-active-bg('ustensiles');
+    }
+  }
+}

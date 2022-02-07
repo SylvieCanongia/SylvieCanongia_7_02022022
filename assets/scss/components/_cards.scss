@@ -1,0 +1,43 @@
+.recipes {
+  .recipe {
+    &__img {
+      background: $color-grey-img;
+      height: 200px;
+    }
+
+    &__heading {
+      font-family: $font-family-title;
+
+      .card-title {
+        font-size: $font-size-normal * 1.125;
+      }
+
+      .recipe__time {
+        font-weight: $font-weight-bold;
+      }
+
+      .recipe__iconClock {
+        font-size: $font-size-normal * 1.1;
+      }
+      .bi::before {
+        font-weight: bold !important;
+      }
+    }
+
+    &__content {
+      .recipe__ingredients {
+        font-family: $font-family-ingredients;
+        font-size: $font-size-normal * 0.75;
+
+        .ingredient__text {
+          font-weight: $font-weight-bold;
+        }
+      }
+
+      p {
+        font-family: $font-family-text;
+        font-size: $font-size-normal * 0.75;
+      }
+    }
+  }
+}
