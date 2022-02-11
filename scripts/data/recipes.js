@@ -566,7 +566,7 @@ const recipes = [
           {
               "ingredient": "Basilic",
               "quantity": 1,
-              "unit":"tiges"
+              "unit":"tige"
           },
           {
               "ingredient": "huile d'olives",
@@ -652,7 +652,7 @@ const recipes = [
           {
               "ingredient": "Lait",
               "quantity": 1,
-              "unit": "litres"
+              "unit": "litre"
           },
           {
               "ingredient": "Sucre glace",
@@ -1374,7 +1374,7 @@ const recipes = [
           {
               "ingredient": "Eau",
               "quantity": 1,
-              "unit": "Litres"
+              "unit": "litre"
           },
           {
               "ingredient": "Citron Vert",
@@ -1491,7 +1491,7 @@ const recipes = [
           {
               "ingredient": "Lait",
               "quantity": 1,
-              "unit": "litres"
+              "unit": "litre"
           },
           {
               "ingredient": "Chocolat",

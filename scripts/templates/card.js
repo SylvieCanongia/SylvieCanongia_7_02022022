@@ -24,11 +24,18 @@ const card = () => {
 
         // select of all the elements contained in the li
         const ingredientName = li.querySelector("[data-ingredient]");
+        const ingredientNameColons = li.querySelector('[data-colons]');
         const ingredientQuantity = li.querySelector("[data-quantity]");
         const ingredientUnit = li.querySelector("[data-unit]");
 
         ingredientName.textContent = item.ingredient;
         ingredientQuantity.textContent = item.quantity;
+
+        // Remove the colons after the ingredient name if there is no quantity specified
+        if(!item.quantity) {
+          ingredientNameColons.style.display = "none";
+        }
+
         ingredientUnit.textContent = item.unit;
         cardIngredientsList.append(li);
       }
