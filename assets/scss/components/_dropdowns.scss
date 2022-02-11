@@ -1,5 +1,7 @@
 .search {
   &__dropdowns {
+    font-family: $font-family-ingredients;
+    font-size: $font-size-normal * 1.125;
     .tags {
       .tag {
         background: $color-blue;
@@ -54,6 +56,7 @@
 
       .dropdown-item {
         font-size: $font-size-normal * 1.125;
+        font-family: $font-family-ingredients;
       }
     }
   }
