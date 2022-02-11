@@ -312,7 +312,7 @@ const recipes = [
               "unit": "grammes"
           },
           {
-              "ingredient": "Vinaigre Balsamic"
+              "ingredient": "Vinaigre Balsamique"
           },
           {
               "ingredient": "Huile d'olive"

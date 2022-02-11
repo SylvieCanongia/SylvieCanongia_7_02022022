@@ -193,17 +193,17 @@
       <!-- Card -->
       <div class="col">
         <div class="recipe card h-100">
-          <img src="#" class=" recipe__img card-img-top" alt="" data-image/>
+          <img src="#" class="card-img-top" alt="" data-image/>
           <div class="card-body">
-            <div class="recipe__heading d-flex flex-row justify-content-between">
+            <div class="d-flex flex-row justify-content-between">
               <h2 class="card-title" data-name></h2>
-              <div d-flex>
+              <div class="d-flex">
                 <i class="recipe__iconClock bi bi-clock" role="img" aria-label="Time"></i>
-                <span class="recipe__time align-self-start"><span data-time></span> min</span>
+                <span data-time-container><span data-time></span> min</span>
               </div>
             </div>
             <div class="recipe__content row">
-              <ul class="recipe__ingredients list-unstyled col-6" data-ingredients>
+              <ul class="list-unstyled col-6" data-ingredients>
                 
               </ul>
               <p class="recipe__desc card-text col-6" data-description>
@@ -215,7 +215,7 @@
       <!-- End card -->
     </template>
      <template data-li-template>
-      <li><span class="ingredient__text" data-ingredient></span><span data-quantity></span> <span data-unit></span> </li>
+      <li><span data-ingredient></span><span data-colons> : </span><span data-quantity></span><span data-unit></span></li>
     </template>
 
     <!-- pages -->

@@ -13,7 +13,10 @@
 //   lg: 960px
 // );
 
+// =========
 // DROPDOWS
+// =========
+
 // Override the active items bg color
 
 $color-blue: hsl(215, 88%, 57%);
@@ -69,6 +72,14 @@ $dropdown-bg-active: (
   }
 }
 
-.dropdown-menu-dark .dropdown-item {
+.dropdown-menu-dark a.dropdown-item {
   color: white;
 }
+
+// =============
+// Recipes cards
+// =============
+
+// .bi-clock.bi::before {
+//   font-weight: bold !important;
+// }
