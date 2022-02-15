@@ -1,12 +1,20 @@
-import { recipes } from "../data/recipes";
-
-const card = () => {
+/**
+ * Call the function 'createRecipe' which creates the cards of the recipes and append them to the home page
+ * into the cards container
+ * @param {arrayOfObject} recipes Contain the list of the recipes with their name, ingredients,
+ * quantity, unit, description,  and time
+ */
+const recipeCard = (recipes) => {
   const cardTemplate = document.querySelector("[data-card-template]");
   const cardContainer = document.querySelector("[data-cards-container");
 
   const liTemplate = document.querySelector("[data-li-template]");
 
-  function createCard() {
+  /**
+   * Create the templates of the recipe's cards and append them to the recipes container
+   * in the home page
+   */
+  function createRecipe() {
     for (const element of recipes) {
       // Clone the first child (to avoid #fragment element) of the template card
       const card = cardTemplate.content.cloneNode(true).children[0];
@@ -41,13 +49,13 @@ const card = () => {
       }
 
       // Inserts the recipe card in its container in the recipes section
-      cardContainer.appendChild(card);
       cardName.textContent = element.name;
       cardTime.textContent = element.time;
       cardDescription.textContent = element.description;
+      cardContainer.appendChild(card);
     }
   }
-  createCard();
+  createRecipe();
 };
 
-export { card };
+export { recipeCard };
