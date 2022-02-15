@@ -1,5 +1,6 @@
 import { recipes } from "../data/recipes";
-import { recipeCard } from './../templates/card.js';
+import { recipeCard } from './../templates/card';
+import { searchBar } from './../utils/searchBar';
 
 const home =() => {
   // Create the recipe cards with the data of the array 'recipes'
@@ -7,7 +8,7 @@ const home =() => {
   recipeCard(recipes);
 
   // MAIN SEARCH BAR
-  
+  searchBar();
 }
 
 home();

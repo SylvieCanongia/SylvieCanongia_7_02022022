@@ -14,7 +14,7 @@ const recipeCard = (recipes) => {
    * Create the templates of the recipe's cards and append them to the recipes container
    * in the home page
    */
-  function createRecipe() {
+  const createRecipe = () => {
     for (const element of recipes) {
       // Clone the first child (to avoid #fragment element) of the template card
       const card = cardTemplate.content.cloneNode(true).children[0];
