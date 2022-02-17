@@ -45,9 +45,11 @@ const search = (recipes, recipeCard) => {
 
     if (value.length >= 3) {
       for (let i = 0; i < recipesData.length; i++) {
-        // Loop on each value of the arrayOfValues to see if the value is in the recipe's name
+        // Loop on each value of the arrayOfValues to see if the value is
+        // in the recipe's name, ingredients or description
         LoopOnValues: for (valueElement of arrayOfValues) {
           if (valueElement !== "") {
+            // ==== Search on the name ====
             const isVisibleByName = recipesData[i].name.includes(valueElement);
 
             // if the value is found in the name, find the matching recipe in the array of object 'recipes'
@@ -65,17 +67,14 @@ const search = (recipes, recipeCard) => {
               continue LoopOnValues;
             }
 
-            // let isVisibleByIngredient = false;
+            // ==== Search on the ingredients ====
 
-            // console.log(recipesData[i].ingredients);
             for (let ingredientElement of recipesData[i].ingredients) {
               let ingredientTerms = ingredientElement.ingredient
                 .concat(" ", ingredientElement.quantity)
                 .concat(" ", ingredientElement.unit);
               const isVisibleByIngredient =
                 ingredientTerms.includes(valueElement);
-
-              // console.log(isVisibleByIngredient);
 
               if (isVisibleByIngredient) {
                 const indexOfRecipeToDisplay = recipes.findIndex(
@@ -91,6 +90,26 @@ const search = (recipes, recipeCard) => {
                 }
                 continue LoopOnValues;
               }
+            }
+
+            // ==== Search on the description ====
+
+            const isVisibleByDescription =
+              recipesData[i].description.includes(valueElement);
+
+            // if the value is found in the name, find the matching recipe in the array of object 'recipes'
+            // via the matching id of the recipe
+            if (isVisibleByDescription) {
+              const indexOfRecipeToDisplay = recipes.findIndex(
+                (el) => el.id == recipesData[i].id
+              );
+
+              // See if the recipe isn't already in the array recipesToDisplay to avoid duplication
+              // if no, push the recipe into the array
+              if (!recipesToDisplay.includes(recipes[indexOfRecipeToDisplay])) {
+                recipesToDisplay.push(recipes[indexOfRecipeToDisplay]);
+              }
+              continue LoopOnValues;
             }
           }
         }

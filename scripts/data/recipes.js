@@ -664,7 +664,7 @@ const recipes = [
               "quantity": 1
           }
       ],
-      "time": 0,
+      "time": 10,
       "description":"Coupez les fruits en morceaux, ajouter le jus de citron et le lait ainsi que le sucre glace. Mixez. Ajoutez des glaçons si le lait n'a pas été mis au frais.",
       "appliance": "Blender",
       "ustensils":["couteau", "verres", "presse citron"]
@@ -1392,7 +1392,7 @@ const recipes = [
           }
       ],
       "time": 10,
-      "description":"Dans un saladier mettre l'eau, le jus des cirtons et le sucre. Bien mélanger. Ajouter le bicarbonate. Servir. Ajouter des glaçon et une feuille de menthe pour la déco.",
+      "description":"Dans un saladier mettre l'eau, le jus des cirtons et le sucre. Bien mélanger. Ajouter le bicarbonate. Servir. Ajouter des glaçons et une feuille de menthe pour la déco.",
       "appliance": "Saladier",
       "ustensils":["cuillère en bois"]
   },
