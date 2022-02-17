@@ -1,3 +1,5 @@
+"use strict";
+
 // create an element with classes Ids or attributes, text content
 // and append to another element
 // Parameters : ( 'element', { className: class, Id: attrValue or attrName: value },

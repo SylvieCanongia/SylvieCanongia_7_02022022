@@ -19,9 +19,12 @@
     ></script>
 
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Lato:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Lato:wght@400;700&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
     <!-- Bootstrap icons -->
     <link
       rel="stylesheet"
@@ -47,27 +50,29 @@
 
     <!-- ======= Main ======= -->
     <main class="main-home">
-
       <!-- Search section -->
       <section class="search">
         <div class="container">
-
           <!-- Search bar -->
           <div class="search__bar row">
             <form class="search__form">
-              <div class="input-group mb-3">
+              <div
+                class="input-group mb-3"
+                data-error
+                data-error-visible="false"
+              >
                 <input
-                  id='search'
+                  id="search"
                   class="form-control"
                   type="search"
                   placeholder="Rechercher une recette"
                   aria-label="Search"
                   data-search
-                  minlength = "3"
+                  minlength="3"
+                  required
                 />
                 <label for="search" class="input-group-text">
-                  <i class="bi bi-search" aria-label="Search"
-                  role="img"></i>
+                  <i class="bi bi-search" aria-label="Search" role="img"></i>
                 </label>
               </div>
             </form>
@@ -77,7 +82,9 @@
           <!-- Dropdowns -->
           <div class="search__dropdowns row pb-3">
             <div class="tags">
-              <div class="tag d-flex justify-content-beetween">Coco<i class="bi bi-x-circle"></i></div>
+              <div class="tag d-flex justify-content-beetween">
+                Coco<i class="bi bi-x-circle"></i>
+              </div>
             </div>
             <div class="dropdown" aria-label="Recherche par tag">
               <button
@@ -169,7 +176,6 @@
             </div>
           </div>
           <!-- End dropdowns -->
-
         </div>
       </section>
       <!-- End search section -->
@@ -177,10 +183,10 @@
       <!-- Recipes section -->
       <section class="recipes">
         <div class="recipes__container container">
-          <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4" data-cards-container>
-        
-
-          </div>
+          <div
+            class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4"
+            data-cards-container
+          ></div>
         </div>
       </section>
       <!-- End recipes section -->
@@ -196,29 +202,33 @@
       <!-- Card -->
       <div class="col">
         <div class="recipe card h-100">
-          <img src="#" class="card-img-top" alt="" data-image/>
+          <img src="#" class="card-img-top" alt="" data-image />
           <div class="card-body">
             <div class="d-flex flex-row justify-content-between">
               <h2 class="card-title" data-name></h2>
               <div class="d-flex">
-                <i class="recipe__iconClock bi bi-clock" role="img" aria-label="Time"></i>
+                <i
+                  class="recipe__iconClock bi bi-clock"
+                  role="img"
+                  aria-label="Time"
+                ></i>
                 <span data-time-container><span data-time></span> min</span>
               </div>
             </div>
             <div class="recipe__content row">
-              <ul class="list-unstyled col-6" data-ingredients>
-                
-              </ul>
-              <p class="recipe__desc card-text col-6" data-description>
-              </p>
+              <ul class="list-unstyled col-6" data-ingredients></ul>
+              <p class="recipe__desc card-text col-6" data-description></p>
             </div>
           </div>
         </div>
       </div>
       <!-- End card -->
     </template>
-     <template data-li-template>
-      <li><span data-ingredient></span><span data-colons> : </span><span data-quantity></span><span data-unit></span></li>
+    <template data-li-template>
+      <li>
+        <span data-ingredient></span><span data-colons> : </span
+        ><span data-quantity></span><span data-unit></span>
+      </li>
     </template>
 
     <!-- pages -->
