@@ -9,6 +9,19 @@
 const search = (recipes, recipeCard) => {
   const searchInputElement = document.querySelector("[data-search]");
 
+  /**
+   *
+   * @param {Array} recipesToDisplay Recipes to display after sorting of the recipes from the main Search
+   * @param {number} indexOfRecipeToDisplay The index of the recipe to display
+   */
+  const pushIfNoDuplicate = (recipesToDisplay, indexOfRecipeToDisplay) => {
+    // See if the recipe isn't already in the array recipesToDisplay to avoid duplication
+    // if no, push the recipe into the array
+    if (!recipesToDisplay.includes(recipes[indexOfRecipeToDisplay])) {
+      recipesToDisplay.push(recipes[indexOfRecipeToDisplay]);
+    }
+  };
+
   // Create the base array from the object recipes
   // for sorting the main search results
   // .toLowerCase => lowercase for all terms
@@ -61,9 +74,8 @@ const search = (recipes, recipeCard) => {
 
               // See if the recipe isn't already in the array recipesToDisplay to avoid duplication
               // if no, push the recipe into the array
-              if (!recipesToDisplay.includes(recipes[indexOfRecipeToDisplay])) {
-                recipesToDisplay.push(recipes[indexOfRecipeToDisplay]);
-              }
+              pushIfNoDuplicate(recipesToDisplay, indexOfRecipeToDisplay);
+
               continue LoopOnValues;
             }
 
@@ -83,11 +95,8 @@ const search = (recipes, recipeCard) => {
 
                 // See if the recipe isn't already in the array recipesToDisplay to avoid duplication
                 // if no, push the recipe into the array
-                if (
-                  !recipesToDisplay.includes(recipes[indexOfRecipeToDisplay])
-                ) {
-                  recipesToDisplay.push(recipes[indexOfRecipeToDisplay]);
-                }
+                pushIfNoDuplicate(recipesToDisplay, indexOfRecipeToDisplay);
+                
                 continue LoopOnValues;
               }
             }
@@ -106,9 +115,8 @@ const search = (recipes, recipeCard) => {
 
               // See if the recipe isn't already in the array recipesToDisplay to avoid duplication
               // if no, push the recipe into the array
-              if (!recipesToDisplay.includes(recipes[indexOfRecipeToDisplay])) {
-                recipesToDisplay.push(recipes[indexOfRecipeToDisplay]);
-              }
+              pushIfNoDuplicate(recipesToDisplay, indexOfRecipeToDisplay);
+              
               continue LoopOnValues;
             }
           }
