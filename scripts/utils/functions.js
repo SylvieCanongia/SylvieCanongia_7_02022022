@@ -13,7 +13,7 @@
    * like 'div.container'.If none write undefined.
    * @returns HTML Element
    */
- const createElement = (elementName, classIdAttr, textContent, appendTo) => {
+  export const createElement = (elementName, classIdAttr, textContent, appendTo) => {
   const element = document.createElement(elementName);
   // create an array of class, id or attributes
   Object.keys(classIdAttr).forEach((i) => {
@@ -31,5 +31,3 @@
   }
   return element;
 };
-
-export { createElement };
