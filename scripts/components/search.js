@@ -60,7 +60,7 @@ const search = (recipes, recipeCard) => {
       for (let i = 0; i < recipesData.length; i++) {
         // Loop on each value of the arrayOfValues to see if the value is
         // in the recipe's name, ingredients or description
-        LoopOnValues: for (valueElement of arrayOfValues) {
+        LoopOnValues: for (const valueElement of arrayOfValues) {
           if (valueElement !== "") {
             // ==== Search on the name ====
             const isVisibleByName = recipesData[i].name.includes(valueElement);
@@ -81,7 +81,7 @@ const search = (recipes, recipeCard) => {
 
             // ==== Search on the ingredients ====
 
-            for (let ingredientElement of recipesData[i].ingredients) {
+            for (const ingredientElement of recipesData[i].ingredients) {
               let ingredientTerms = ingredientElement.ingredient
                 .concat(" ", ingredientElement.quantity)
                 .concat(" ", ingredientElement.unit);
