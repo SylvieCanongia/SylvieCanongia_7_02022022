@@ -19,6 +19,14 @@
     }
 
     .dropdown {
+
+      &-menu {
+        height: 400px;
+        width: 50%;
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+
       .btn {
         font-size: $font-size-normal * 1.125;
         margin-inline-end: $space-base * 1.5;
