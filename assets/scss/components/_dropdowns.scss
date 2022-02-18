@@ -19,14 +19,6 @@
     }
 
     .dropdown {
-
-      &-menu {
-        height: 400px;
-        width: 50%;
-        overflow-y: auto;
-        overflow-x: hidden;
-      }
-
       .btn {
         font-size: $font-size-normal * 1.125;
         margin-inline-end: $space-base * 1.5;
@@ -40,22 +32,76 @@
         }
       }
 
+      &-menu {
+        height: 400px;
+        width: 50%;
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+
       .btn__ingredients,
-      .btn__ingredients__list {
+      .btn__ingredients__list,
+      .btn__ingredients__list .form-control {
         background: $color-blue;
         color: $color-white;
       }
 
-      .btn__appareils,
-      .btn__appareils__list {
+      .btn__appliance,
+      .btn__appliance__list,
+      .btn__appliance__list .form-control {
         background: $color-green;
         color: $color-white;
       }
 
-      .btn__ustensiles,
-      .btn__ustensiles__list {
+      .btn__ustensils,
+      .btn__ustensils__list,
+      .btn__ustensils__list .form-control {
         background: $color-red;
         color: $color-white;
+      }
+
+      // DROPDOWN INPUT
+      .dropdown__input {
+        display: block;
+        width: 100%;
+        padding: 0.375rem 0.75rem;
+        font-size: $font-size-normal;
+        font-weight: $font-weight-regular;
+        line-height: 1.5;
+        border-radius: 0.25rem;
+        appearance: none;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+        &[data-ingredients-input] {
+          background-color: $color-blue;
+        }
+
+        &[data-appliance-input] {
+          background-color: $color-green;
+        }
+
+        &[data-ustensils-input] {
+          background-color: $color-red;
+        }
+
+        &[data-ingredients-input],
+        &[data-appliance-input],
+        &[data-ustensils-input] {
+          border: transparent;
+        }
+
+        // Placeholder
+        &[data-ingredients-input]::placeholder {
+          @include customPlaceholder("ingredients");
+        }
+
+        &[data-appliance-input]::placeholder {
+          @include customPlaceholder("appliance");
+        }
+
+        &[data-ustensils-input]::placeholder {
+          @include customPlaceholder("ustensils");
+        }
       }
 
       .btn:hover {

@@ -24,18 +24,18 @@ $color-green: hsl(152, 60%, 63%);
 $color-red: hsl(6, 81%, 63%);
 
 $color-ingredients-bg-active: darken($color-blue, 10%);
-$color-appareils-bg-active: darken($color-green, 10%);
-$color-ustensiles-bg-active: darken($color-red, 10%);
+$color-appliance-bg-active: darken($color-green, 10%);
+$color-ustensils-bg-active: darken($color-red, 10%);
 
 $dropdown-bg-active: (
   'ingredients': (
     'bg-active': $color-ingredients-bg-active
   ),
-  'appareils': (
-    'bg-active': $color-appareils-bg-active
+  'appliance': (
+    'bg-active': $color-appliance-bg-active
   ),
-  'ustensiles': (
-    'bg-active': $color-ustensiles-bg-active
+  'ustensils': (
+    'bg-active': $color-ustensils-bg-active
   )
 );
 
@@ -54,20 +54,20 @@ $dropdown-bg-active: (
   }
 }
 
-.btn__appareils__list.dropdown-menu-dark {
+.btn__appliance__list.dropdown-menu-dark {
   a.dropdown-item {
     &.active,
     &:active {
-      @include dropdown-link-active-bg('appareils');
+      @include dropdown-link-active-bg('appliance');
     }
   }
 }
 
-.btn__ustensiles__list.dropdown-menu-dark {
+.btn__ustensils__list.dropdown-menu-dark {
   a.dropdown-item {
     &.active,
     &:active {
-    @include dropdown-link-active-bg('ustensiles');
+    @include dropdown-link-active-bg('ustensils');
     }
   }
 }
