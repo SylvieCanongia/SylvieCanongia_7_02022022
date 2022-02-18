@@ -1,6 +1,7 @@
-import { recipes } from "../data/recipes";
-import { recipeCard } from "../templates/recipeCard";
+import { recipes } from '../data/recipes';
+import { recipeCard } from '../templates/recipeCard';
 import { search } from "../components/search";
+import { dropdowns } from './../components/dropdowns'
 
 const home = () => {
   // Create the recipe cards with the data of the array 'recipes'
@@ -9,6 +10,7 @@ const home = () => {
 
   // Manage the search in the main searchBar
   search(recipes, recipeCard);
+  dropdowns(recipes);
 };
 
 home();
