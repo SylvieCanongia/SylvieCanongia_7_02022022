@@ -7,7 +7,7 @@ const dropdowns = (recipes) => {
   const ustensils = [];
 
   for (let i = 0; i < recipes.length; i++) {
-    for (ingredientElement of recipes[i].ingredients) {
+    for (const ingredientElement of recipes[i].ingredients) {
       if (!ingredients.includes(ingredientElement.ingredient)) {
         ingredients.push(ingredientElement.ingredient);
         dropdownItem(ingredientElement.ingredient, "[data-ingredients-list]");
@@ -19,7 +19,7 @@ const dropdowns = (recipes) => {
       dropdownItem(recipes[i].appliance, "[data-appliance-list]");
     }
 
-    for (ustensilElement of recipes[i].ustensils) {
+    for (const ustensilElement of recipes[i].ustensils) {
       if (!ustensils.includes(ustensilElement)) {
         ustensils.push(ustensilElement);
         dropdownItem(ustensilElement, "[data-ustensils-list]");
