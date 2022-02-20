@@ -1,3 +1,5 @@
+import { dropdowns } from './dropdowns';
+
 /**
  *
  * @param {Object} recipes An array of objects containing the data for recipes
@@ -33,6 +35,7 @@ const search = (recipes, recipeCard) => {
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
   );
+
   let recipesToDisplay = [];
 
   // Sorting will be on the properties 'name, ingredients and description'
@@ -44,7 +47,8 @@ const search = (recipes, recipeCard) => {
     delete recipesData[i].ustensils;
   }
 
-  // We listen to the input
+  // We listen to the input and update results for each char > 3 typed
+  // The items of hte dropdowns are also updated at the same time
   searchInputElement.addEventListener("input", (event) => {
     // Remove uppercase characters and accents / diacritics
     const value = event.target.value
@@ -122,11 +126,20 @@ const search = (recipes, recipeCard) => {
           }
         }
       }
+
+      // The list of tags in each dropdown are also updated
+      // dropdowns(recipesToDisplay);
+
       // Creates the cards of the filtered recipes and displays them
       recipeCard(recipesToDisplay);
+
+      // The list of tags in each dropdown are also updated
+      dropdowns(recipesToDisplay);
+
     } else {
       // if entered value is < 3 chars, creates cards and displays all the recipes
       recipeCard(recipes);
+      dropdowns(recipes);
     }
   });
 };
