@@ -86,102 +86,88 @@
                 Coco<i class="bi bi-x-circle"></i>
               </div>
             </div>
-            <div class="dropdown" aria-label="Recherche par tag">
-              <button
-                class="btn btn__ingredients btn-sm dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Ingrédients
-              </button>
-              <ul
-                class="btn__ingredients__list dropdown-menu dropdown-menu-dark"
-                aria-labelledby="dropdownMenuButton"
-              >
-                <div class="row">
-                  <div class="col mb-2">
-                    <input
-                      type="text"
-                      class="dropdown__input"
-                      placeholder="Rechercher un ingrédient"
-                      data-ingredients-input
-                    />
+            <div class="dropdown d-flex gap-3" aria-label="Recherche par tag">
+              <div class="dropdown__input_wrapper">
+                <input
+                  class="btn btn__ingredients btn-sm dropdown-toggle dropdown__input"
+                  type="text"
+                  placeholder="Ingrédients"
+                  data-placeholder="Ingrédients"
+                  data-placeholder-expanded = "ingredient"
+                  id="dropdownMenuButton"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  data-ingredients-input
+                />
+                <ul
+                  class="btn__ingredients__list dropdown-menu dropdown-menu-dark"
+                  aria-labelledby="dropdownMenuButton"
+                >
+                  <div class="row row-cols-3" data-ingredients-list>
+                    <div class="col">
+                      <li>
+                        <a class="dropdown-item active" href="#"
+                          >Lait de coco</a
+                        >
+                      </li>
+                    </div>
                   </div>
-                </div>
-                <div class="row row-cols-3" data-ingredients-list>
-                  <div class="col">
-                    <li>
-                      <a class="dropdown-item active" href="#">Lait de coco</a>
-                    </li>
-                  </div>
-                </div>
-              </ul>
-
-              <button
-                class="btn btn__appliance btn-sm dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Appareils
-              </button>
-              <ul
-                class="btn__appliance__list dropdown-menu dropdown-menu-dark"
-                aria-labelledby="dropdownMenuButton"
-              >
-              <div class="row">
-                <div class="col mb-2">
-                  <input
-                    type="text"
-                    class="dropdown__input"
-                    placeholder="Rechercher un appareil"
-                    data-appliance-input
-                  />
-                </div>
+                </ul>
               </div>
-                <div class="row row-cols-3" data-appliance-list>
-                  <div class="col">
-                    <li>
-                      <a class="dropdown-item active" href="#">Lait de coco</a>
-                    </li>
+              <div class="dropdown__input_wrapper">
+                <input
+                  class="btn btn__appliance btn-sm dropdown-toggle dropdown__input"
+                  type="text"
+                  placeholder="Appareils"
+                  data-placeholder="Appareils"
+                  data-placeholder-expanded = "appareil"
+                  id="dropdownMenuButton"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  data-appliance-input
+                />
+                <ul
+                  class="btn__appliance__list dropdown-menu dropdown-menu-dark"
+                  aria-labelledby="dropdownMenuButton"
+                >
+                  <div class="row row-cols-3" data-appliance-list>
+                    <div class="col">
+                      <li>
+                        <a class="dropdown-item active" href="#"
+                          >Lait de coco</a
+                        >
+                      </li>
+                    </div>
                   </div>
-                </div>
-              </ul>
-
-              <button
-                class="btn btn__ustensils btn-sm dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Ustensiles
-              </button>
-              <ul
-                class="btn__ustensils__list dropdown-menu dropdown-menu-dark"
-                aria-labelledby="dropdownMenuButton"
-              >
-              <div class="row">
-                <div class="col mb-2">
-                  <input
-                    type="text"
-                    class="dropdown__input"
-                    placeholder="Rechercher un ustensile"
-                    data-ustensils-input
-                  />
-                </div>
+                </ul>
               </div>
-                <div class="row row-cols-3" data-ustensils-list>
-                  <div class="col">
-                    <li>
-                      <a class="dropdown-item active" href="#">Lait de coco</a>
-                    </li>
+              <div class="dropdown__input_wrapper">
+                <input
+                  class="btn btn__ustensils btn-sm dropdown-toggle dropdown__input"
+                  type="text"
+                  placeholder="Ustensiles"
+                  data-placeholder="Ustensiles"
+                  data-placeholder-expanded = "ustensile"
+                  id="dropdownMenuButton"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  data-ustensils-input
+                />
+                <ul
+                  class="btn__ustensils__list dropdown-menu dropdown-menu-dark"
+                  aria-labelledby="dropdownMenuButton"
+                >
+                  <div class="row row-cols-3" data-ustensils-list>
+                    <div class="col">
+                      <li>
+                        <a class="dropdown-item active" href="#"
+                          >Lait de coco</a
+                        >
+                      </li>
+                    </div>
                   </div>
-                </div>
-              </ul>
+                </ul>
+              </div>
             </div>
           </div>
           <!-- End dropdowns -->

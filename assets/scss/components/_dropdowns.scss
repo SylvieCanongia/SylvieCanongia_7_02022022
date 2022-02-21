@@ -19,24 +19,19 @@
     }
 
     .dropdown {
-      .btn {
-        font-size: $font-size-normal * 1.125;
-        margin-inline-end: $space-base * 1.5;
-        padding-inline: $space-base * 2;
-        width: 155px;
-        height: 50px;
-
-        @include media-breakpoint-up(md) {
-          width: 170px;
-          height: 60px;
-        }
+      .dropdown__input_wrapper {
+        position: relative;
       }
 
       &-menu {
         height: 400px;
-        width: 50%;
+        width: 500px;
+        border-block-start: none;
         overflow-y: auto;
         overflow-x: hidden;
+        border-start-start-radius: 0;
+        border-start-end-radius: 0;
+        transform: translate3d(0, 62px, 0) !important;
       }
 
       .btn__ingredients,
@@ -62,32 +57,31 @@
 
       // DROPDOWN INPUT
       .dropdown__input {
-        display: block;
-        width: 100%;
-        padding: 0.375rem 0.75rem;
-        font-size: $font-size-normal;
-        font-weight: $font-weight-regular;
-        line-height: 1.5;
-        border-radius: 0.25rem;
-        appearance: none;
-        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-
-        &[data-ingredients-input] {
-          background-color: $color-blue;
-        }
-
-        &[data-appliance-input] {
-          background-color: $color-green;
-        }
-
-        &[data-ustensils-input] {
-          background-color: $color-red;
-        }
 
         &[data-ingredients-input],
         &[data-appliance-input],
         &[data-ustensils-input] {
-          border: transparent;
+          line-height: 1.5;
+          font-size: $font-size-normal * 1.125;
+          padding-inline: $space-base * 2;
+          width: 155px;
+          height: 50px;
+          border-color: rgba(0, 0, 0, 0.15);
+          border-block-end: transparent;
+          text-align: left;
+
+          @include media-breakpoint-up(md) {
+            width: 170px;
+            height: 62px;
+          }
+        }
+
+        &[data-ingredients-input][aria-expanded='true'],
+        &[data-appliance-input][aria-expanded='true'],
+        &[data-ustensils-input][aria-expanded='true'] {
+          width: 500px;
+          border-end-start-radius: 0;
+          border-end-end-radius: 0;
         }
 
         // Placeholder
