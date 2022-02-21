@@ -35,22 +35,20 @@
       }
 
       .btn__ingredients,
-      .btn__ingredients__list,
-      .btn__ingredients__list .form-control {
+      .btn__ingredients__list {
         background: $color-blue;
         color: $color-white;
       }
 
       .btn__appliance,
-      .btn__appliance__list,
-      .btn__appliance__list .form-control {
+      .btn__appliance__list {
         background: $color-green;
         color: $color-white;
       }
 
       .btn__ustensils,
-      .btn__ustensils__list,
-      .btn__ustensils__list .form-control {
+      .btn__ustensils__list 
+      {
         background: $color-red;
         color: $color-white;
       }
@@ -106,6 +104,38 @@
         font-size: $font-size-normal * 1.125;
         font-family: $font-family-ingredients;
       }
+
+      .arrow {
+        border: solid $color-white;
+        border-width: 0 3px 3px 0;
+        display: inline-block;
+        position: absolute;
+        right: 20px;
+        top: 42%;
+        padding: 3px;
+      }
+
+      .arrow-down {
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+      }
+
+      .arrow-up {
+        transform: rotate(-135deg);
+        -webkit-transform: rotate(-135deg);
+      }
+
+      // .chevron-down {
+      //   position: relative;
+      //   }
+
+      // .chevron-down::before {
+      // font-family: 'bootstrap-icons' !important;
+      // font-style: normal;
+      // font-weight: normal;
+      // color: black;
+      // content: "\F282";
+      // }
     }
   }
 }
