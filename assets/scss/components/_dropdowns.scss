@@ -28,25 +28,6 @@
         white-space: nowrap;
       }
 
-      .btn__ingredients,
-      .btn__ingredients__list {
-        background: $color-blue;
-        color: $color-white;
-      }
-
-      .btn__appliance,
-      .btn__appliance__list {
-        background: $color-green;
-        color: $color-white;
-      }
-
-      .btn__ustensils,
-      .btn__ustensils__list 
-      {
-        background: $color-red;
-        color: $color-white;
-      }
-
       // DROPDOWN INPUT
       .dropdown__input {
 
@@ -87,6 +68,10 @@
 
         &[data-ustensils-input]::placeholder {
           @include customPlaceholder("ustensils");
+        }
+
+        &[data-input].placeholderColor::placeholder {
+          color: $color-white;
         }
       }
 
@@ -149,6 +134,25 @@
         // transform: translate3d(0, 62px, 0) !important;
       }
 
+      .btn__ingredients,
+      .btn__ingredients__list {
+        background: $color-blue;
+        // color: $color-white;
+      }
+
+      .btn__appliance,
+      .btn__appliance__list {
+        background: $color-green;
+        // color: $color-white;
+      }
+
+      .btn__ustensils,
+      .btn__ustensils__list 
+      {
+        background: $color-red;
+        // color: $color-white;
+      }
+
       .show {
         display: block;
       }
@@ -160,6 +164,7 @@
       .dropdown-item {
         font-size: $font-size-normal * 1.125;
         font-family: $font-family-ingredients;
+        color: $color-white;
       }
     }
   }

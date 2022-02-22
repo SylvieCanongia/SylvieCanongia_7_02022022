@@ -8,9 +8,10 @@ const dropdowns = (recipesData) => {
   const applianceListContainer = document.querySelector('[data-appliance-list]');
   const ustensilsListContainer = document.querySelector('[data-ustensils-list]');
 
-  // =================================================
+  // ==============================================================
   // Toggles the dropdown menu and toggles the display
   // of the up and down arrows, on click on the arrow
+  // Closes an opened dropdown when clicking on another one's arrow
 
   const arrowBoxes = document.querySelectorAll('[data-arrowBox]');
   const dropdownWrappers = document.querySelectorAll('.dropdown__input_wrapper');
@@ -20,18 +21,21 @@ const dropdowns = (recipesData) => {
     arrowBox.addEventListener('click', (event) => {
       const input = arrowBox.previousElementSibling;
       const list = input.closest('.dropdown__input_wrapper').querySelector('[data-dropdown-list]');
+      const arrow = arrowBox.firstChild;
       const defaultPlaceholder = arrowBox.previousElementSibling.dataset.placeholder;
       const placeholderExpanded = arrowBox.previousElementSibling.dataset.placeholderExpanded;
 
-      if (arrowBox.previousElementSibling.getAttribute('aria-expanded') == "false") {
+      if (input.getAttribute('aria-expanded') == "false") {
         // Before opening the selected list, checks if another list is already opened
         // and close it to avoid having 2 lists opened at the same time
         for (const dropdownWrapper of dropdownWrappers) {
+          const dropdownInput = dropdownWrapper.querySelector('[data-input]')
           if (dropdownWrapper.querySelector('[data-input]').getAttribute('aria-expanded') == 'true') {
             console.log('true');
             dropdownWrapper.querySelector('[data-dropdown-list]').classList.remove('show');
-            dropdownWrapper.querySelector('[data-input]').setAttribute('aria-expanded',"false");
-            dropdownWrapper.querySelector('[data-input]').setAttribute('placeholder', defaultPlaceholder);
+            dropdownInput.setAttribute('aria-expanded',"false");
+            dropdownInput.classList.add('placeholderColor');
+            dropdownInput.setAttribute('placeholder', defaultPlaceholder);
             dropdownWrapper.querySelector('[data-arrow]').classList.add('arrow-down');
             dropdownWrapper.querySelector('[data-arrow]').classList.remove('arrow-up');
           }
@@ -39,17 +43,19 @@ const dropdowns = (recipesData) => {
 
         // Then the selected list is opened
         list.classList.add('show');
-        arrowBox.previousElementSibling.setAttribute('aria-expanded',"true");
-        arrowBox.previousElementSibling.setAttribute('placeholder', `Rechercher un ${placeholderExpanded}`);
-        arrowBox.firstChild.classList.add('arrow-up');
-        arrowBox.firstChild.classList.remove('arrow-down');
+        input.setAttribute('aria-expanded',"true");
+        input.classList.remove('placeholderColor');
+        input.setAttribute('placeholder', `Rechercher un ${placeholderExpanded}`);
+        arrow.classList.add('arrow-up');
+        arrow.classList.remove('arrow-down');
         input.focus();
       } else {
         list.classList.remove('show');
-        arrowBox.previousElementSibling.setAttribute('aria-expanded',"false");
-        arrowBox.previousElementSibling.setAttribute('placeholder', defaultPlaceholder);
-        arrowBox.firstChild.classList.add('arrow-down');
-        arrowBox.firstChild.classList.remove('arrow-up');
+        input.setAttribute('aria-expanded',"false");
+        input.classList.add('placeholderColor');
+        input.setAttribute('placeholder', defaultPlaceholder);
+        arrow.classList.add('arrow-down');
+        arrow.classList.remove('arrow-up');
       }
     });
   }
