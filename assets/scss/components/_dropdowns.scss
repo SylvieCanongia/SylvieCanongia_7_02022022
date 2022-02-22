@@ -18,20 +18,14 @@
       }
     }
 
-    .dropdown {
+    .search__dropdown {
       .dropdown__input_wrapper {
         position: relative;
+        z-index: 100;
       }
 
-      &-menu {
-        height: 400px;
-        width: 500px;
-        border-block-start: none;
-        overflow-y: auto;
-        overflow-x: hidden;
-        border-start-start-radius: 0;
-        border-start-end-radius: 0;
-        transform: translate3d(0, 62px, 0) !important;
+      .dropdown_toggle {
+        white-space: nowrap;
       }
 
       .btn__ingredients,
@@ -96,23 +90,25 @@
         }
       }
 
-      .btn:hover {
-        color: $color-white;
-      }
-
-      .dropdown-item {
-        font-size: $font-size-normal * 1.125;
-        font-family: $font-family-ingredients;
+      .arrowBox {
+        position: absolute;
+        cursor: pointer;
+        display: inline-block;
+        right: 0;
+        top: 27%;
+        padding-inline: 20px;
+        z-index: 1000;
       }
 
       .arrow {
         border: solid $color-white;
         border-width: 0 3px 3px 0;
         display: inline-block;
-        position: absolute;
-        right: 20px;
-        top: 42%;
+        // position: absolute;
+        // right: 20px;
+        // top: 42%;
         padding: 3px;
+        z-index: 9999;
       }
 
       .arrow-down {
@@ -125,17 +121,46 @@
         -webkit-transform: rotate(-135deg);
       }
 
-      // .chevron-down {
-      //   position: relative;
-      //   }
+      & .dropdown__menu {
+        // bootstrap's styles
+        position: absolute;
+        z-index: 100;
+        display: none;
+        min-width: 10rem;
+        padding: 0.5rem 0;
+        margin: 0;
+        font-size: 1rem;
+        // color: #212529;
+        text-align: left;
+        list-style: none;
+        // background-color: #fff;
+        // background-clip: padding-box;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 0.25rem;
 
-      // .chevron-down::before {
-      // font-family: 'bootstrap-icons' !important;
-      // font-style: normal;
-      // font-weight: normal;
-      // color: black;
-      // content: "\F282";
-      // }
+        // custom styles
+        height: 400px;
+        width: 500px;
+        border-block-start: none;
+        overflow-y: auto;
+        overflow-x: hidden;
+        border-start-start-radius: 0;
+        border-start-end-radius: 0;
+        // transform: translate3d(0, 62px, 0) !important;
+      }
+
+      .show {
+        display: block;
+      }
+
+      .btn:hover {
+        color: $color-white;
+      }
+
+      .dropdown-item {
+        font-size: $font-size-normal * 1.125;
+        font-family: $font-family-ingredients;
+      }
     }
   }
 }

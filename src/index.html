@@ -86,23 +86,24 @@
                 Coco<i class="bi bi-x-circle"></i>
               </div>
             </div>
-            <div class="dropdown d-flex gap-3" aria-label="Recherche par tag">
-              <div class="dropdown__input_wrapper">
+            <div class="search__dropdown d-flex gap-3" aria-label="Recherche par tag">
+              <div class="dropdown__input_wrapper" tabindex="-1">
                 <input
-                  class="btn btn__ingredients btn-sm dropdown-toggle dropdown__input"
+                  class="btn btn__ingredients btn-sm dropdown_toggle dropdown__input"
                   type="text"
                   placeholder="Ingrédients"
                   data-placeholder="Ingrédients"
                   data-placeholder-expanded = "ingredient"
-                  id="dropdownMenuButton"
-                  data-bs-toggle="dropdown"
+                  id="dropdownMenuBtnIng"
                   aria-expanded="false"
                   data-ingredients-input
+                  data-input
                 />
-                <span><i class="arrow arrow-down" aria-label="Choisir un ingrédient" tabindex='0' data-arrow></i></span>
+                <span class="arrowBox" data-arrowBox><i class="arrow arrow-down" aria-label="Choisir un ingrédient" tabindex='0' data-arrow></i></span>
                 <ul
-                  class="btn__ingredients__list dropdown-menu dropdown-menu-dark"
-                  aria-labelledby="dropdownMenuButton"
+                  class="btn__ingredients__list dropdown__menu"
+                  aria-labelledby="dropdownMenuBtnIng"
+                  data-dropdown-list
                 >
                   <div class="row row-cols-3" data-ingredients-list>
                     <div class="col">
@@ -115,22 +116,23 @@
                   </div>
                 </ul>
               </div>
-              <div class="dropdown__input_wrapper">
+              <div class="dropdown__input_wrapper" tabindex="-1">
                 <input
-                  class="btn btn__appliance btn-sm dropdown-toggle dropdown__input"
+                  class="btn btn__appliance btn-sm dropdown_toggle dropdown__input"
                   type="text"
                   placeholder="Appareils"
                   data-placeholder="Appareils"
                   data-placeholder-expanded = "appareil"
-                  id="dropdownMenuButton"
-                  data-bs-toggle="dropdown"
+                  id="dropdownMenuBtnApp"
                   aria-expanded="false"
                   data-appliance-input
+                  data-input
                 />
-                <span><i class="arrow arrow-down" aria-label="Choisir un appareil" tabindex='0' data-arrow></i></span>
+                <span class="arrowBox" data-arrowBox><i class="arrow arrow-down" aria-label="Choisir un appareil" tabindex='0' data-arrow></i></span>
                 <ul
-                  class="btn__appliance__list dropdown-menu dropdown-menu-dark"
-                  aria-labelledby="dropdownMenuButton"
+                  class="btn__appliance__list dropdown__menu"
+                  aria-labelledby="dropdownMenuBtnApp"
+                  data-dropdown-list
                 >
                   <div class="row row-cols-3" data-appliance-list>
                     <div class="col">
@@ -143,22 +145,23 @@
                   </div>
                 </ul>
               </div>
-              <div class="dropdown__input_wrapper">
+              <div class="dropdown__input_wrapper" tabindex="-1">
                 <input
-                  class="btn btn__ustensils btn-sm dropdown-toggle dropdown__input"
+                  class="btn btn__ustensils btn-sm dropdown_toggle dropdown__input"
                   type="text"
                   placeholder="Ustensiles"
                   data-placeholder="Ustensiles"
                   data-placeholder-expanded = "ustensile"
-                  id="dropdownMenuButton"
-                  data-bs-toggle="dropdown"
+                  id="dropdownMenuBtnUst"
                   aria-expanded="false"
                   data-ustensils-input
+                  data-input
                 />
-                <span><i class="arrow arrow-down" aria-label="Choisir un ustensile" tabindex='0' data-arrow></i></span>
+                <span class="arrowBox" data-arrowBox><i class="arrow arrow-down" aria-label="Choisir un ustensile" tabindex='0' data-arrow></i></span>
                 <ul
-                  class="btn__ustensils__list dropdown-menu dropdown-menu-dark"
-                  aria-labelledby="dropdownMenuButton"
+                  class="btn__ustensils__list dropdown__menu"
+                  aria-labelledby="dropdownMenuBtnUst"
+                  data-dropdown-list
                 >
                   <div class="row row-cols-3" data-ustensils-list>
                     <div class="col">
