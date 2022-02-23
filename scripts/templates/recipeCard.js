@@ -4,15 +4,15 @@
  * @param {arrayOfObject} recipes Contain the list of the recipes with their name, ingredients,
  * quantity, unit, description,  and time
  */
-const recipeCard = (recipes) => {
+const recipeCard = (recipesToDisplay) => {
   const cardTemplate = document.querySelector("[data-card-template]");
   const cardContainer = document.querySelector("[data-cards-container");
 
-  const liTemplate = document.querySelector("[data-li-template]");
+  const liTemplate = document.querySelector("[data-recipe-li-template]");
 
   cardContainer.innerHTML = "";
 
-  for (const element of recipes) {
+  for (const element of recipesToDisplay) {
     // Clone the first child (to avoid #fragment element) of the template card
     const card = cardTemplate.content.cloneNode(true).children[0];
 

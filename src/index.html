@@ -81,9 +81,9 @@
 
           <!-- Dropdowns -->
           <div class="search__dropdowns row pb-3">
-            <div class="tags">
-              <div class="tag d-flex justify-content-beetween">
-                Coco<i class="bi bi-x-circle"></i>
+            <div class="tags" data-tags-container>
+              <div class="tag d-flex justify-content-beetween" data-tag>
+                Coco<i class="bi bi-x-circle" tabindex="0" aria-label="Supprimer le tag" data-icon-delete></i>
               </div>
             </div>
             <div class="search__dropdown d-flex gap-3" aria-label="Recherche par tag">
@@ -105,14 +105,7 @@
                   aria-labelledby="dropdownMenuBtnIng"
                   data-dropdown-list
                 >
-                  <div class="row row-cols-3" data-ingredients-list>
-                    <div class="col">
-                      <li>
-                        <a class="dropdown-item active" href="#"
-                          >Lait de coco</a
-                        >
-                      </li>
-                    </div>
+                  <div class="row row-cols-3" data-ingredients-list data-list>
                   </div>
                 </ul>
               </div>
@@ -134,14 +127,7 @@
                   aria-labelledby="dropdownMenuBtnApp"
                   data-dropdown-list
                 >
-                  <div class="row row-cols-3" data-appliance-list>
-                    <div class="col">
-                      <li>
-                        <a class="dropdown-item active" href="#"
-                          >Lait de coco</a
-                        >
-                      </li>
-                    </div>
+                  <div class="row row-cols-3" data-appliance-list data-list>
                   </div>
                 </ul>
               </div>
@@ -163,14 +149,7 @@
                   aria-labelledby="dropdownMenuBtnUst"
                   data-dropdown-list
                 >
-                  <div class="row row-cols-3" data-ustensils-list>
-                    <div class="col">
-                      <li>
-                        <a class="dropdown-item active" href="#"
-                          >Lait de coco</a
-                        >
-                      </li>
-                    </div>
+                  <div class="row row-cols-3" data-ustensils-list data-list>
                   </div>
                 </ul>
               </div>
@@ -225,7 +204,7 @@
       </div>
       <!-- End card -->
     </template>
-    <template data-li-template>
+    <template data-recipe-li-template>
       <li>
         <span data-ingredient></span><span data-colons> : </span
         ><span data-quantity></span><span data-unit></span>

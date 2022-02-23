@@ -1,7 +1,8 @@
 import { recipes } from '../data/recipes';
 import { recipeCard } from '../templates/recipeCard';
 import { search } from "../components/search";
-import { dropdowns } from './../components/dropdowns'
+import { dropdowns, manageDropdowns } from './../components/dropdowns';
+import { tagSearch } from '../components/tagSearch';
 
 const home = () => {
 // let recipesToDisplay = [];
@@ -10,9 +11,12 @@ const home = () => {
   // and display them on the home page
   recipeCard(recipes);
   dropdowns(recipes);
+  manageDropdowns();
 
   // Manage the search in the main searchBar
   search(recipes, recipeCard);
+
+  tagSearch(recipes, recipeCard);
 };
 
 home();

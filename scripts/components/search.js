@@ -1,4 +1,5 @@
 import { dropdowns } from './dropdowns';
+import { tagSearch } from './tagSearch';
 
 /**
  *
@@ -48,9 +49,9 @@ const search = (recipes, recipeCard) => {
   }
 
   // We listen to the input and update results for each char > 3 typed
-  // The items of hte dropdowns are also updated at the same time
+  // The items of the dropdowns are also updated at the same time
   searchInputElement.addEventListener("input", (event) => {
-    // Remove uppercase characters and accents / diacritics
+    // Sets uppercase characters to lowercase and remove accents / diacritics
     const value = event.target.value
       .toLowerCase()
       .normalize("NFD")
@@ -86,16 +87,14 @@ const search = (recipes, recipeCard) => {
             // ==== Search on the ingredients ====
 
             for (const ingredientElement of recipesData[i].ingredients) {
+              // Concat all the terms ingredient, quantity and unit
               let ingredientTerms = ingredientElement.ingredient
                 .concat(" ", ingredientElement.quantity)
                 .concat(" ", ingredientElement.unit);
-              const isVisibleByIngredient =
-                ingredientTerms.includes(valueElement);
+              const isVisibleByIngredient = ingredientTerms.includes(valueElement);
 
               if (isVisibleByIngredient) {
-                const indexOfRecipeToDisplay = recipes.findIndex(
-                  (el) => el.id == recipesData[i].id
-                );
+                const indexOfRecipeToDisplay = recipes.findIndex((el) => el.id == recipesData[i].id);
 
                 // See if the recipe isn't already in the array recipesToDisplay to avoid duplication
                 // if no, push the recipe into the array
@@ -126,15 +125,16 @@ const search = (recipes, recipeCard) => {
           }
         }
       }
-
-      // The list of tags in each dropdown are also updated
-      // dropdowns(recipesToDisplay);
+      console.log(recipesToDisplay)
 
       // Creates the cards of the filtered recipes and displays them
       recipeCard(recipesToDisplay);
 
       // The list of tags in each dropdown are also updated
       dropdowns(recipesToDisplay);
+
+      // The array of recipes for the search by tag is updated
+      tagSearch(recipesToDisplay, recipeCard);
 
     } else {
       // if entered value is < 3 chars, creates cards and displays all the recipes
