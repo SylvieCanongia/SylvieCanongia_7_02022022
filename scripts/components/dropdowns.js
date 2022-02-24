@@ -65,6 +65,7 @@ const manageDropdowns = () => {
             dropdownWrapper.querySelector('[data-dropdown-list]').classList.remove('show');
             dropdownInput.setAttribute('aria-expanded',"false");
             dropdownInput.classList.add('placeholderColor');
+            dropdownInput.value = "";
             dropdownInput.setAttribute('placeholder', defaultPlaceholder);
             dropdownWrapper.querySelector('[data-arrow]').classList.add('arrow-down');
             dropdownWrapper.querySelector('[data-arrow]').classList.remove('arrow-up');
@@ -95,6 +96,7 @@ const manageDropdowns = () => {
         list.classList.remove('show');
         input.setAttribute('aria-expanded',"false");
         input.classList.add('placeholderColor');
+        input.value = '';
         input.setAttribute('placeholder', defaultPlaceholder);
         arrow.classList.add('arrow-down');
         arrow.classList.remove('arrow-up');

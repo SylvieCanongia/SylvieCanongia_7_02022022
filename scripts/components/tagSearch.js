@@ -6,7 +6,7 @@ import { searchFromTags } from '../utils/searchFromTags';
 const tagSearch = (recipesToDisplay, recipeCard) => {
   // Selects all the inputs
   const searchTagInputElements = document.querySelectorAll("[data-input]");
-  const dropdownsTags = document.querySelectorAll('[data-dropdown-item]');
+  let dropdownsTags = document.querySelectorAll('[data-dropdown-item]');
 
   const tagsContainerAboveDropdowns = document.querySelector('[data-tags-container]');
   const tagTemplate = document.querySelector("[data-tag-template]");
@@ -34,8 +34,11 @@ const tagSearch = (recipesToDisplay, recipeCard) => {
   // let applianceTagsToDisplay = [];
   // let ustensilsTagsToDisplay = [];
 
+  // ==========
+  // FUNCTIONS
+  // ==========
+
   /**
-   *
    * @param {Array} recipesToDisplay Recipes to display after sorting of the recipes from the main Search
    * @param {number} indexOfRecipeToDisplay The index of the recipe to display
    */
@@ -46,6 +49,44 @@ const tagSearch = (recipesToDisplay, recipeCard) => {
       newRecipesToDisplay.push(recipesToDisplay[indexOfIngredientTagToDisplay]);
     }
   };
+
+  const displayTagAboveDropdowns = () => {
+    dropdownsTags = document.querySelectorAll('[data-dropdown-item]');
+
+    console.log(dropdownsTags);
+    for (const dropdownsTag of dropdownsTags) {
+
+      dropdownsTag.addEventListener('click', (event) => {
+        console.log(event.currentTarget.textContent)
+
+           // Clone the first child (to avoid #fragment element) of the template card
+            const tagClone = tagTemplate.content.cloneNode(true).children[0];
+            console.log(tagClone);
+            tagClone.firstElementChild.textContent = event.currentTarget.textContent;
+
+            const tagCloneListWrapper = event.currentTarget.closest('[data-list]');
+
+            if(tagCloneListWrapper.hasAttribute('data-ingredients-list')) {
+              tagClone.style.backgroundColor = 'hsl(215, 88%, 57%)';
+            }
+            
+            if (tagCloneListWrapper.hasAttribute('data-appliance-list')){
+              tagClone.style.backgroundColor = 'hsl(152, 60%, 63%)';
+            }
+
+            if (tagCloneListWrapper.hasAttribute('data-ustensils-list')){
+              tagClone.style.backgroundColor = 'hsl(6, 81%, 63%)';
+            }
+
+              // Displays the selected tag above the dropdowns
+            tagsContainerAboveDropdowns.append(tagClone);
+      })
+    }
+  }
+
+  // =============
+  // END FUNCTIONS
+  // =============
 
   // Create the base array from the array of objects 'recipesToDisplay'
   // for sorting the search in dropdowns
@@ -143,6 +184,8 @@ const tagSearch = (recipesToDisplay, recipeCard) => {
           }
         }
 
+        displayTagAboveDropdowns();
+
         if(event.target.hasAttribute('data-appliance-input')) {
           for (let i = 0; i < applianceTags.length; i++) {
             LoopOnValues: for (const valueElement of arrayOfValues) {
@@ -179,35 +222,74 @@ const tagSearch = (recipesToDisplay, recipeCard) => {
     });
   }
 
-  //  DISPLAYS THE CLICKED TAGS ABOVE THE DROPDOWNS
+  // const displayTagAboveDropdowns = () => {
 
-  for (const dropdownsTag of dropdownsTags) {
+  //   dropdownsTags = document.querySelectorAll('[data-dropdown-item]');
 
-      dropdownsTag.addEventListener('click', (event) => {
-        console.log(event.currentTarget.textContent)
+  //   console.log(dropdownsTags);
+  //   for (const dropdownsTag of dropdownsTags) {
 
-           // Clone the first child (to avoid #fragment element) of the template card
-            const tagClone = tagTemplate.content.cloneNode(true).children[0];
-            console.log(tagClone);
-            tagClone.firstElementChild.textContent = event.currentTarget.textContent;
+  //     dropdownsTag.addEventListener('click', (event) => {
+  //       console.log(event.currentTarget.textContent)
 
-            const tagCloneListWrapper = event.currentTarget.closest('[data-list]');
+  //          // Clone the first child (to avoid #fragment element) of the template card
+  //           const tagClone = tagTemplate.content.cloneNode(true).children[0];
+  //           console.log(tagClone);
+  //           tagClone.firstElementChild.textContent = event.currentTarget.textContent;
 
-            if(tagCloneListWrapper.hasAttribute('data-ingredients-list')) {
-              tagClone.style.backgroundColor = 'hsl(215, 88%, 57%)';
-            }
+  //           const tagCloneListWrapper = event.currentTarget.closest('[data-list]');
+
+  //           if(tagCloneListWrapper.hasAttribute('data-ingredients-list')) {
+  //             tagClone.style.backgroundColor = 'hsl(215, 88%, 57%)';
+  //           }
             
-            if (tagCloneListWrapper.hasAttribute('data-appliance-list')){
-              tagClone.style.backgroundColor = 'hsl(152, 60%, 63%)';
-            }
+  //           if (tagCloneListWrapper.hasAttribute('data-appliance-list')){
+  //             tagClone.style.backgroundColor = 'hsl(152, 60%, 63%)';
+  //           }
 
-            if (tagCloneListWrapper.hasAttribute('data-ustensils-list')){
-              tagClone.style.backgroundColor = 'hsl(6, 81%, 63%)';
-            }
+  //           if (tagCloneListWrapper.hasAttribute('data-ustensils-list')){
+  //             tagClone.style.backgroundColor = 'hsl(6, 81%, 63%)';
+  //           }
 
-              // Displays the selected tag above the dropdowns
-            tagsContainerAboveDropdowns.append(tagClone);
-      })
+  //             // Displays the selected tag above the dropdowns
+  //           tagsContainerAboveDropdowns.append(tagClone);
+  //     })
+  //   }
+  // }
+
+  displayTagAboveDropdowns();
+
+
+  // //  DISPLAYS THE CLICKED TAGS ABOVE THE DROPDOWNS
+
+  // for (const dropdownsTag of dropdownsTags) {
+
+  //     dropdownsTag.addEventListener('click', (event) => {
+  //       console.log(event.currentTarget.textContent)
+
+  //          // Clone the first child (to avoid #fragment element) of the template card
+  //           const tagClone = tagTemplate.content.cloneNode(true).children[0];
+  //           console.log(tagClone);
+  //           tagClone.firstElementChild.textContent = event.currentTarget.textContent;
+
+  //           const tagCloneListWrapper = event.currentTarget.closest('[data-list]');
+
+  //           if(tagCloneListWrapper.hasAttribute('data-ingredients-list')) {
+  //             tagClone.style.backgroundColor = 'hsl(215, 88%, 57%)';
+  //           }
+            
+  //           if (tagCloneListWrapper.hasAttribute('data-appliance-list')){
+  //             tagClone.style.backgroundColor = 'hsl(152, 60%, 63%)';
+  //           }
+
+  //           if (tagCloneListWrapper.hasAttribute('data-ustensils-list')){
+  //             tagClone.style.backgroundColor = 'hsl(6, 81%, 63%)';
+  //           }
+
+  //             // Displays the selected tag above the dropdowns
+  //           tagsContainerAboveDropdowns.append(tagClone);
+  //     })
+
 
         // ==================================================================
         // UPDATES THE DISPLAYED RECIPES in function of the selected tags
@@ -234,7 +316,7 @@ const tagSearch = (recipesToDisplay, recipeCard) => {
             // }
         // })
       // }
-  }
+  // }
 
     // });
 }
