@@ -1,0 +1,6 @@
+const searchFromTags = () => {
+
+
+}
+
+export { searchFromTags };

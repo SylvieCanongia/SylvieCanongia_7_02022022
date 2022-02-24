@@ -81,11 +81,8 @@
 
           <!-- Dropdowns -->
           <div class="search__dropdowns row pb-3">
-            <div class="tags" data-tags-container>
-              <div class="tag d-flex justify-content-beetween" data-tag>
-                Coco<i class="bi bi-x-circle" tabindex="0" aria-label="Supprimer le tag" data-icon-delete></i>
-              </div>
-            </div>
+            <!-- Container to display the selected tags from the dropdowns -->
+            <div class="tags d-flex gap-2 mt-2" data-tags-container></div>
             <div class="search__dropdown d-flex gap-3" aria-label="Recherche par tag">
               <div class="dropdown__input_wrapper" tabindex="-1">
                 <input
@@ -178,6 +175,8 @@
     <footer class="footer"></footer>
     <!-- ======= Footer ======= -->
 
+    <!-- TEMPLATES -->
+    <!-- recipe card template -->
     <template data-card-template>
       <!-- Card -->
       <div class="col">
@@ -204,12 +203,23 @@
       </div>
       <!-- End card -->
     </template>
+    <!-- recipe card template -->
+
+    <!-- Ingredient item of the recipe card template -->
     <template data-recipe-li-template>
       <li>
         <span data-ingredient></span><span data-colons> : </span
         ><span data-quantity></span><span data-unit></span>
       </li>
     </template>
+    <!-- End of ingredient item of the recipe card template -->
+    <!-- template of the tag displayed above the dropdowns -->
+    <template data-tag-template>
+      <div class="tag d-flex justify-content-beetween" data-tag>
+        <div></div><i class="bi bi-x-circle" tabindex="0" aria-label="Supprimer le tag" data-icon-delete></i>
+      </div>
+    </template>
+
 
     <!-- pages -->
     <script type="module" src="./index.js"></script>
