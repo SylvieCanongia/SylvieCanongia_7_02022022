@@ -147,7 +147,7 @@ const tagSearch = (recipesToDisplay, recipeCard) => {
       ingredientsTagsToDisplay = [];
 
       console.log(arrayOfValues)
-      if(value === undefined || value === "") {
+      if(value === "") {
         recipeCard(recipesToDisplay);
         dropdowns(recipesToDisplay);
         
@@ -222,7 +222,7 @@ const tagSearch = (recipesToDisplay, recipeCard) => {
 
       applianceTagsToDisplay = [];
 
-      if(value === undefined || value === "") {
+      if(value === "") {
         recipeCard(recipesToDisplay);
         dropdowns(recipesToDisplay);
       } else {
@@ -290,7 +290,7 @@ const tagSearch = (recipesToDisplay, recipeCard) => {
 
       ustensilsTagsToDisplay = [];
         
-      if(value === undefined || value === "") {
+      if(value === "") {
         recipeCard(recipesToDisplay);
         dropdowns(recipesToDisplay);
       } else {
