@@ -3,6 +3,7 @@ import { dropdownItem } from "../templates/dropdownsItem";
 import { recipeCard } from '../templates/recipeCard';
 import { dropdowns } from './dropdowns';
 import { searchUpdateFromTags } from '../utils/searchUpdateFromTags';
+import { updateOnDeleteTag } from '../utils/updateOnDeleteTag';
 
 /**
  * @param { array } recipesToDisplay The array with the updated data of the recipes to display
@@ -221,6 +222,7 @@ const tagSearch = (recipesToDisplay) => {
       // Then sorts the new recipes to display
       // and the tags to display in the dropdowns
       searchUpdateFromTags();
+      updateOnDeleteTag();
     });
 
       // Listen the inputs and get the value entered by the user
@@ -292,6 +294,7 @@ const tagSearch = (recipesToDisplay) => {
       // Then sorts the new recipes to display
       // and the tags to display in the dropdowns
       searchUpdateFromTags();
+      updateOnDeleteTag();
     });
 
     // Listen the inputs and get the value entered by the user
@@ -367,10 +370,12 @@ const tagSearch = (recipesToDisplay) => {
       // Then sorts the new recipes to display
       // and the tags to display in the dropdowns
       searchUpdateFromTags();
+      updateOnDeleteTag();
     });
 
   displayTagAboveDropdowns();
   searchUpdateFromTags();
+  updateOnDeleteTag();
 
 }
 

@@ -4,8 +4,8 @@ import { tagSearch } from './tagSearch';
 
 /**
  *
- * @param {Object} recipes An array of objects containing the data for recipes
- * @param {function} recipeCard Displays all the recipes from the data of the 'recipes'
+ * @param { array } recipes An array of objects containing the data for recipes
+ * @param { function } recipeCard Displays all the recipes from the data of the 'recipes'
  *
  * Filters the recipes from the main search box and displays them. Filtering is done by comparing with the name,
  * the ingredients or the description of the recipes data.
@@ -15,8 +15,8 @@ const search = (recipes) => {
 
   /**
    *
-   * @param { Array } recipes Array from which are taken the data of the recipes via their id
-   * @param { Array } recipesToDisplay Recipes to display after sorting of the recipes from the main Search
+   * @param { array } recipes Array from which are taken the data of the recipes via their id
+   * @param { array } recipesToDisplay Recipes to display after sorting of the recipes from the main Search
    * @param { number } indexOfRecipeToDisplay The index of the recipe to display
    */
   const pushIfNoDuplicate = (recipes, recipesToDisplay, indexOfRecipeToDisplay) => {
@@ -91,8 +91,8 @@ const search = (recipes) => {
             for (const ingredientElement of recipesData[i].ingredients) {
               // Concat all the terms ingredient, quantity and unit
               let ingredientTerms = ingredientElement.ingredient
-                // .concat(" ", ingredientElement.quantity)
-                // .concat(" ", ingredientElement.unit);
+              // .concat(" ", ingredientElement.quantity)
+              // .concat(" ", ingredientElement.unit);
               const isVisibleByIngredient = ingredientTerms.includes(valueElement);
 
               if (isVisibleByIngredient) {
@@ -101,7 +101,7 @@ const search = (recipes) => {
                 // See if the recipe isn't already in the array recipesToDisplay to avoid duplication
                 // if no, push the recipe into the array
                 pushIfNoDuplicate(recipes, recipesToDisplay, indexOfRecipeToDisplay);
-                
+
                 continue LoopOnValues;
               }
             }
@@ -121,7 +121,7 @@ const search = (recipes) => {
               // See if the recipe isn't already in the array recipesToDisplay to avoid duplication
               // if no, push the recipe into the array
               pushIfNoDuplicate(recipes, recipesToDisplay, indexOfRecipeToDisplay);
-              
+
               continue LoopOnValues;
             }
           }
@@ -135,15 +135,19 @@ const search = (recipes) => {
       dropdowns(recipesToDisplay);
 
       // The array of recipes for the search by tag is updated
-      tagSearch(recipesToDisplay );
+      tagSearch(recipesToDisplay);
 
     } else {
       // if entered value is < 3 chars, creates cards and displays all the recipes
       recipeCard(recipes);
       dropdowns(recipes);
-      tagSearch(recipes );
+      tagSearch(recipes);
     }
   });
+
+  searchInputElement.addEventListener('blur', (event) => {
+    searchInputElement.value = '';
+  })
 };
 
 export { search };

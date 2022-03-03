@@ -1,6 +1,10 @@
 import { dropdownItem } from "../templates/dropdownsItem";
 import {tagSearch } from './tagSearch';
 
+/**
+ * 
+ * @param { array } recipesToDisplay The sorted list of recipes to display
+ */
 const dropdowns = (recipesToDisplay) => {
   let ingredients = [];
   let appliance = [];
@@ -37,16 +41,15 @@ const dropdowns = (recipesToDisplay) => {
   }
 }
 
+/**
+ * Toggles the dropdown menu and toggles the display 
+ * of the up and down arrows, on click on the arrow.
+ * Closes an opened dropdown when clicking on another one's arrow
+ */
 const manageDropdowns = () => {
-  // ==============================================================
-  // Toggles the dropdown menu and toggles the display
-  // of the up and down arrows, on click on the arrow
-  // Closes an opened dropdown when clicking on another one's arrow
 
   const arrowBoxes = document.querySelectorAll('[data-arrowBox]');
   const dropdownWrappers = document.querySelectorAll('.dropdown__input_wrapper');
-  // const listOftags = document.querySelectorAll('[data-dropdown-item]');
-  // console.log(listOftags)
 
   for (const arrowBox of arrowBoxes) {
     arrowBox.addEventListener('click', (event) => {
@@ -80,17 +83,6 @@ const manageDropdowns = () => {
         arrow.classList.add('arrow-up');
         arrow.classList.remove('arrow-down');
         input.focus();
-
-        // SEARCH BY TAGS
-
-        // Gets all the tags and push them in the array 'arrayOfTags'
-        // const listOftags = document.querySelectorAll('[data-dropdown-item]');
-        // const arrayOfTags = [];
-
-        // for (const tag of listOftags) {
-        //   arrayOfTags.push(tag.textContent);
-        // }
-        // console.log(arrayOfTags);
 
       } else {
         list.classList.remove('show');
