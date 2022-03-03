@@ -1,9 +1,15 @@
 import { tagItem } from '../templates/tagItem';
 import { dropdownItem } from "../templates/dropdownsItem";
+import { recipeCard } from '../templates/recipeCard';
 import { dropdowns } from './dropdowns';
-import { searchFromTags } from '../utils/searchFromTags';
+import { searchUpdateFromTags } from '../utils/searchUpdateFromTags';
 
-const tagSearch = (recipesToDisplay, recipeCard) => {
+/**
+ * @param { array } recipesToDisplay The array with the updated data of the recipes to display
+ * When a tag is clicked in the dropdowns, displays it above the dropdowns
+ */
+const tagSearch = (recipesToDisplay) => {
+
   // Selects all the inputs
   // const searchTagInputElements = document.querySelectorAll("[data-input]");
   const ingredientsInputElement = document.querySelector('[data-ingredients-input');
@@ -48,10 +54,11 @@ const tagSearch = (recipesToDisplay, recipeCard) => {
   // ==========
 
   /**
-   * @param {Array} recipesToDisplay Recipes to display after sorting of the recipes from the main Search
-   * @param {number} indexOfRecipeToDisplay The index of the recipe to display
+   * @param { array } recipesToDisplay Array from which are taken the data of the recipes via their id
+   * @param { array } newRecipesToDisplay Recipes to display after sorting of the recipes from the main Search
+   * @param { number } indexOfTagToDisplay The index of the recipe to display
    */
-   const pushIfNoDuplicate = (newRecipesToDisplay, indexOfTagToDisplay) => {
+   const pushIfNoDuplicate = (recipesToDisplay, newRecipesToDisplay, indexOfTagToDisplay) => {
     // See if the recipe isn't already in the array newRecipesToDisplay to avoid duplication
     // if no, push the recipe into the array
     if (!newRecipesToDisplay.includes(recipesToDisplay[indexOfTagToDisplay])) {
@@ -59,8 +66,12 @@ const tagSearch = (recipesToDisplay, recipeCard) => {
     }
   };
 
+  /**
+   * Displays a tag that is clicked, above the dropdowns
+   */
   const displayTagAboveDropdowns = () => {
     dropdownsTags = document.querySelectorAll('[data-dropdown-item]');
+    let tagsToDisplayAboveDropdowns = [];
 
     for (const dropdownsTag of dropdownsTags) {
       dropdownsTag.addEventListener('click', (event) => {
@@ -68,7 +79,7 @@ const tagSearch = (recipesToDisplay, recipeCard) => {
         // Selects all the tag elements displayed above the dropdowns
         const tagsAboveDropdowns = document.querySelectorAll('[data-tag]');
         // Creates an array that will permit to compare the tags text to avoid duplication
-        const tagsToDisplayAboveDropdowns = [];
+        tagsToDisplayAboveDropdowns = [];
         // And pushes all the tags's text of the actual displayed tags into this array
         for (const tag of tagsAboveDropdowns) {
           tagsToDisplayAboveDropdowns.push(tag.firstElementChild.textContent);
@@ -101,11 +112,11 @@ const tagSearch = (recipesToDisplay, recipeCard) => {
         if(!tagsToDisplayAboveDropdowns.includes(event.currentTarget.textContent)) {
           // Then append the tag into its container
           tagsContainerAboveDropdowns.append(tagClone);
-        }  
+          tagsToDisplayAboveDropdowns.push(event.currentTarget.textContent);
+        }
       })
     }
   }
-
   // =============
   // END FUNCTIONS
   // =============
@@ -146,53 +157,55 @@ const tagSearch = (recipesToDisplay, recipeCard) => {
 
       ingredientsTagsToDisplay = [];
 
-      console.log(arrayOfValues)
+      // console.log(arrayOfValues)
       if(value === "") {
         recipeCard(recipesToDisplay);
         dropdowns(recipesToDisplay);
-        
+        // displayTagAboveDropdowns();
       } else {
 
-          // Reset the lists of the ingredients dropdown to push new sorted items
-          ingredientsListContainer.innerHTML = '';
+        // Reset the lists of the ingredients dropdown to push new sorted items
+        ingredientsListContainer.innerHTML = '';
 
-          for (let i = 0; i < newRecipesData.length; i++) {
-            LoopOnValues: for (const valueElement of arrayOfValues) {
-              if (valueElement !== "") {
+        for (let i = 0; i < newRecipesData.length; i++) {
+          LoopOnValues: for (const valueElement of arrayOfValues) {
+            if (valueElement !== "") {
 
-                for (const ingredientElement of newRecipesData[i].ingredients) {
-                  // console.log(ingredientElement)
-                  const isVisibleIngredientTag = ingredientElement.ingredient.includes(valueElement);
-                  // console.log(isVisibleIngredientTag);
+              for (const ingredientElement of newRecipesData[i].ingredients) {
+                // console.log(ingredientElement)
+                const isVisibleIngredientTag = ingredientElement.ingredient.includes(valueElement);
+                // console.log(isVisibleIngredientTag);
 
-                  // If the value is found in the ingredients tags
-                  if (isVisibleIngredientTag) {
-                    if(!ingredientsTagsToDisplay.includes(ingredientElement.ingredient)) {
-                      ingredientsTagsToDisplay.push(ingredientElement.ingredient);
+                // If the value is found in the ingredients tags
+                if (isVisibleIngredientTag) {
+                  if(!ingredientsTagsToDisplay.includes(ingredientElement.ingredient)) {
+                    ingredientsTagsToDisplay.push(ingredientElement.ingredient);
 
-                      // find the matching tag element, in the array of object 'recipesToDisplay' via the matching id of the recipe
-                      const indexOfIngredientTagToDisplay = recipesToDisplay.findIndex((el) => el.id == newRecipesData[i].id);
+                    // find the matching tag element, in the array of object 'recipesToDisplay' via the matching id of the recipe
+                    const indexOfIngredientTagToDisplay = recipesToDisplay.findIndex((el) => el.id == newRecipesData[i].id);
 
-                      // See if the recipe isn't already in the array 'newRecipesToDisplay' to avoid duplication
-                      // if no, push the recipe into the array
-                      pushIfNoDuplicate(newRecipesToDisplay, indexOfIngredientTagToDisplay);
+                    // Then find the index of the recipe to display after sorting by tag
+                    // via the matching id of the 'recipesData'
 
-                      // for each ingredient element, checks if it's not already in the array ingredients tags
-                      // to avoid displaying several times the same tag
-                      // Then keeps only the ingredients tags that include the value entered in the input
-                      // And display them in the ingredients list with the dropdownItem() function.
-                      for (let i = 0; i < newRecipesToDisplay.length; i++) {
-                        for (const ingredientElement of newRecipesToDisplay[i].ingredients) {
-                          if (!ingredientsTags.includes(ingredientElement.ingredient)) {
-                            ingredientsTags.push(ingredientElement.ingredient);
+                    // See if the recipe isn't already in the array 'newRecipesToDisplay' to avoid duplication
+                    // if no, push the recipe into the array
+                    pushIfNoDuplicate(recipesToDisplay, newRecipesToDisplay, indexOfIngredientTagToDisplay);
+                    // console.log(newRecipesToDisplay)
+                    // for each ingredient element, checks if it's not already in the array ingredients tags
+                    // to avoid displaying several times the same tag
+                    // Then keeps only the ingredients tags that include the value entered in the input
+                    // And display them in the ingredients list with the dropdownItem() function.
+                    for (let i = 0; i < newRecipesToDisplay.length; i++) {
+                      for (const ingredientElement of newRecipesToDisplay[i].ingredients) {
+                        if (!ingredientsTags.includes(ingredientElement.ingredient)) {
+                          ingredientsTags.push(ingredientElement.ingredient);
 
-                            if (ingredientElement.ingredient
-                              .toLowerCase()
-                              .normalize("NFD")
-                              .replace(/[\u0300-\u036f]/g, "")
-                              .includes(valueElement)) {
-                                dropdownItem(ingredientElement.ingredient, "[data-ingredients-list]");
-                            }
+                          if (ingredientElement.ingredient
+                            .toLowerCase()
+                            .normalize("NFD")
+                            .replace(/[\u0300-\u036f]/g, "")
+                            .includes(valueElement)) {
+                              dropdownItem(ingredientElement.ingredient, "[data-ingredients-list]");
                           }
                         }
                       }
@@ -202,8 +215,12 @@ const tagSearch = (recipesToDisplay, recipeCard) => {
               }
             }
           }
+        }
       }
       displayTagAboveDropdowns();
+      // Then sorts the new recipes to display
+      // and the tags to display in the dropdowns
+      searchUpdateFromTags();
     });
 
       // Listen the inputs and get the value entered by the user
@@ -245,7 +262,7 @@ const tagSearch = (recipesToDisplay, recipeCard) => {
 
                   // See if the recipe isn't already in the array 'newRecipesToDisplay' to avoid duplication
                   // if no, push the recipe into the array
-                  pushIfNoDuplicate(newRecipesToDisplay, indexOfAppliancetTagToDisplay);
+                  pushIfNoDuplicate(recipesToDisplay, newRecipesToDisplay, indexOfAppliancetTagToDisplay);
 
                   // for each appliance element, checks if it's not already in the array appliance tags
                   // to avoid displaying several times the same tag
@@ -272,6 +289,9 @@ const tagSearch = (recipesToDisplay, recipeCard) => {
         }  
       }
       displayTagAboveDropdowns();
+      // Then sorts the new recipes to display
+      // and the tags to display in the dropdowns
+      searchUpdateFromTags();
     });
 
     // Listen the inputs and get the value entered by the user
@@ -297,42 +317,41 @@ const tagSearch = (recipesToDisplay, recipeCard) => {
         // Reset the lists of the ustensils dropdown to push new sorted items
         ustensilsListContainer.innerHTML = '';
         
-          for (let i = 0; i < newRecipesData.length; i++) {
-            LoopOnValues: for (const valueElement of arrayOfValues) {
-              if (valueElement !== "") {
+        for (let i = 0; i < newRecipesData.length; i++) {
+          LoopOnValues: for (const valueElement of arrayOfValues) {
+            if (valueElement !== "") {
 
-                for (const ustensilsElement of newRecipesData[i].ustensils) {
-                  const isVisibleUstensilsTag = ustensilsElement.includes(valueElement);
+              for (const ustensilsElement of newRecipesData[i].ustensils) {
+                const isVisibleUstensilsTag = ustensilsElement.includes(valueElement);
 
-                  // If the value is found in the ustensils tags
-                  if (isVisibleUstensilsTag) {
-                    if(!ustensilsTagsToDisplay.includes(ustensilsElement)) {
-                      ustensilsTagsToDisplay.push(ustensilsElement);
+                // If the value is found in the ustensils tags
+                if (isVisibleUstensilsTag) {
+                  if(!ustensilsTagsToDisplay.includes(ustensilsElement)) {
+                    ustensilsTagsToDisplay.push(ustensilsElement);
 
-                      // find the matching tag element, in the array of object 'recipesToDisplay'
-                      // via the matching id of the recipe
-                      const indexOfUstensilTagToDisplay = recipesToDisplay.findIndex((el) => el.id == newRecipesData[i].id);
+                    // find the matching tag element, in the array of object 'recipesToDisplay'
+                    // via the matching id of the recipe
+                    const indexOfUstensilTagToDisplay = recipesToDisplay.findIndex((el) => el.id == newRecipesData[i].id);
 
-                      // See if the recipe isn't already in the array 'newRecipesToDisplay' to avoid duplication
-                      // if no, push the recipe into the array
-                      pushIfNoDuplicate(newRecipesToDisplay, indexOfUstensilTagToDisplay);
+                    // See if the recipe isn't already in the array 'newRecipesToDisplay' to avoid duplication
+                    // if no, push the recipe into the array
+                    pushIfNoDuplicate(recipesToDisplay, newRecipesToDisplay, indexOfUstensilTagToDisplay);
 
-                      // for each ustensils element, checks if it's not already in the array ustensilsTags
-                      // to avoid displaying several times the same tag
-                      // Then keeps only the ustensils tags that include the value entered in the input
-                      // And display them in the ustensils's dropodown list with the dropdownItem() function.
-                      for (let i = 0; i < newRecipesToDisplay.length; i++) {
-                        for (const ustensilsElement of newRecipesToDisplay[i].ustensils) {
-                          if (!ustensilsTags.includes(ustensilsElement)) {
-                            ustensilsTags.push(ustensilsElement);
+                    // for each ustensils element, checks if it's not already in the array ustensilsTags
+                    // to avoid displaying several times the same tag
+                    // Then keeps only the ustensils tags that include the value entered in the input
+                    // And display them in the ustensils's dropodown list with the dropdownItem() function.
+                    for (let i = 0; i < newRecipesToDisplay.length; i++) {
+                      for (const ustensilsElement of newRecipesToDisplay[i].ustensils) {
+                        if (!ustensilsTags.includes(ustensilsElement)) {
+                          ustensilsTags.push(ustensilsElement);
 
-                            if (ustensilsElement
-                            .toLowerCase()
-                            .normalize("NFD")
-                            .replace(/[\u0300-\u036f]/g, "")
-                            .includes(valueElement)) {
-                              dropdownItem(ustensilsElement, "[data-ustensils-list]");
-                            }
+                          if (ustensilsElement
+                          .toLowerCase()
+                          .normalize("NFD")
+                          .replace(/[\u0300-\u036f]/g, "")
+                          .includes(valueElement)) {
+                            dropdownItem(ustensilsElement, "[data-ustensils-list]");
                           }
                         }
                       }
@@ -342,54 +361,17 @@ const tagSearch = (recipesToDisplay, recipeCard) => {
               }
             }
           }
-
-        // console.log(newRecipesToDisplay)
-
-        // Creates the cards of the filtered recipes and displays them
-        // recipeCard(newRecipesToDisplay);
-
-        // The list of tags in each dropdown are also updated
-        // dropdowns(newRecipesToDisplay);
+        }
       }
-      // else {
-      // // if entered value is < 3 chars, creates cards and displays all the recipes
-      // recipeCard(recipesToDisplay);
-      // dropdowns(recipesToDisplay);
-      // }
       displayTagAboveDropdowns();
+      // Then sorts the new recipes to display
+      // and the tags to display in the dropdowns
+      searchUpdateFromTags();
     });
 
   displayTagAboveDropdowns();
+  searchUpdateFromTags();
 
-  
-
-
-
-  
-
-
-    // ==================================================================
-    // UPDATES THE DISPLAYED RECIPES in function of the selected tags
-      //   // Updates the displayed recipes in function of the selected tags
-      //   searchFromTags();
-
-        // ==== Search on the ingredients ====
-
-        //   for (const ingredientElement of recipesData[i].ingredients) {
-        //   // Concat all the terms ingredient, quantity and unit
-        //   let ingredientTerms = ingredientElement.ingredient
-        //     .concat(" ", ingredientElement.quantity)
-        //     .concat(" ", ingredientElement.unit);
-        //   const isVisibleByIngredient = ingredientTerms.includes(valueElement);
-
-        //   if (isVisibleByIngredient) {
-        //     const indexOfRecipeToDisplay = recipes.findIndex((el) => el.id == recipesData[i].id);
-
-        //     // See if the recipe isn't already in the array recipesToDisplay to avoid duplication
-        //     // if no, push the recipe into the array
-        //     pushIfNoDuplicate(recipesToDisplay, indexOfRecipeToDisplay);
-        //   }
-        // }
 }
 
 export { tagSearch };

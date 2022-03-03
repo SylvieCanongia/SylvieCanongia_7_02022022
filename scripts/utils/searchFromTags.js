@@ -1,6 +1,0 @@
-const searchFromTags = () => {
-
-
-}
-
-export { searchFromTags };
