@@ -1,7 +1,7 @@
 import { recipes } from "../data/recipes";
 import { updateFromTags } from "./updateFromTags";
 
-const updateOnDeleteTag = () => {
+const updateOnDeleteTag = (mainSearchRecipesToDisplay, recipesToDisplay) => {
 
   // Selects all the tags elements displayed above the dropdowns
   //  to have an updated array of the last tags selected
@@ -27,16 +27,16 @@ const updateOnDeleteTag = () => {
     delete recipesData[i].appliance;
     delete recipesData[i].ustensils;
   }
-  
-   for (const iconDelete of iconsDelete) {
-     iconDelete.addEventListener('click', (event) => {
-       event.stopPropagation();
-       event.currentTarget.closest('[data-tag]').remove();
 
-       updateFromTags(recipesData);
-     })
-   }
+  for (const iconDelete of iconsDelete) {
+    iconDelete.addEventListener('click', (event) => {
+      event.stopPropagation();
+      event.currentTarget.closest('[data-tag]').remove();
+
+      updateFromTags(recipesData, mainSearchRecipesToDisplay, recipesToDisplay);
+    })
+  } 
 
 }
 
-export { updateOnDeleteTag };
+export { updateOnDeleteTag }

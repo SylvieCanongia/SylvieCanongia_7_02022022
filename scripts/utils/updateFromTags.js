@@ -21,7 +21,8 @@ import { tagSearch } from '../components/tagSearch';
  * @param { array } recipesData An array of objects containing the data for recipes
  * 
  */
-const updateFromTags = (recipesData) => {
+const updateFromTags = (recipesData, mainSearchRecipesToDisplay, recipesToDisplay) => {
+  console.log(mainSearchRecipesToDisplay)
 
   let recipesToDisplayFromTags = [];
   let arrayOfSelectedTags = [];
@@ -29,16 +30,28 @@ const updateFromTags = (recipesData) => {
        // Selects all the tags elements displayed above the dropdowns
       //  to have an updated array of the last tags selected
        const selectedTagsElements = document.querySelectorAll('[data-tag]');
+      //  console.log(selectedTagsElements)
 
+      // If all the tags above the dropdowns have been deleted
+      // reset the displayed recipes
       if (selectedTagsElements.length === 0) {
-        // If all the tags above the dropdowns have been deleted
-        // reset the displayed recipes
+        const searchInputElement = document.querySelector("[data-search]");
 
-        // Creates the cards of the filtered recipes and displays them
-        recipeCard(recipes);
-        // The list of tags in each dropdown are also updated
-        dropdowns(recipes);
-        tagSearch(recipes);
+        
+        // from the value of the main search input if defined
+        if (searchInputElement.value != '' ) {
+          recipeCard(mainSearchRecipesToDisplay);
+          // The list of tags in each dropdown is also updated
+          dropdowns(mainSearchRecipesToDisplay);
+          tagSearch(recipesToDisplay, mainSearchRecipesToDisplay);
+          } else {
+            // else if no value is entered in the main search
+            // reset the interface from all the recipes
+            recipeCard(recipes);
+            // The list of tags in each dropdown are also updated
+            dropdowns(recipes);
+            tagSearch(recipes);
+          }
 
       } else {
         // Pushes all the tags's text of the actual displayed tags into this array
@@ -128,7 +141,7 @@ const updateFromTags = (recipesData) => {
 
       // The list of tags in each dropdown are also updated
       dropdowns(recipesToDisplayFromTags);
-      tagSearch(recipesToDisplayFromTags);
+      tagSearch(recipesToDisplayFromTags, mainSearchRecipesToDisplay);
       }
 
       

@@ -60,11 +60,13 @@ const search = (recipes) => {
       .replace(/[\u0300-\u036f]/g, "");
     let arrayOfValues = value.split(" ");
 
+    console.log(value)
     // empty the array to reset the displayed recipes
     recipesToDisplay = [];
 
     if (value.length >= 3) {
       for (let i = 0; i < recipesData.length; i++) {
+      
         // Loop on each value of the arrayOfValues to see if the value is
         // in the recipe's name, ingredients or description
         LoopOnValues: for (const valueElement of arrayOfValues) {
@@ -91,8 +93,7 @@ const search = (recipes) => {
             for (const ingredientElement of recipesData[i].ingredients) {
               // Concat all the terms ingredient, quantity and unit
               let ingredientTerms = ingredientElement.ingredient
-              // .concat(" ", ingredientElement.quantity)
-              // .concat(" ", ingredientElement.unit);
+
               const isVisibleByIngredient = ingredientTerms.includes(valueElement);
 
               if (isVisibleByIngredient) {
@@ -128,26 +129,29 @@ const search = (recipes) => {
         }
       }
 
+      // The array of recipes for the search by tag is updated
+      let mainSearchRecipesToDisplay = [...recipesToDisplay];
+      
+      // console.log(recipesToDisplay, mainSearchRecipesToDisplay)
+
       // Creates the cards of the filtered recipes and displays them
       recipeCard(recipesToDisplay);
 
       // The list of tags in each dropdown are also updated
       dropdowns(recipesToDisplay);
 
-      // The array of recipes for the search by tag is updated
-      tagSearch(recipesToDisplay);
+      
+
+      tagSearch(recipesToDisplay, mainSearchRecipesToDisplay);
 
     } else {
       // if entered value is < 3 chars, creates cards and displays all the recipes
       recipeCard(recipes);
       dropdowns(recipes);
-      tagSearch(recipes);
+      tagSearch(recipes, mainSearchRecipesToDisplay);
     }
   });
 
-  searchInputElement.addEventListener('blur', (event) => {
-    searchInputElement.value = '';
-  })
 };
 
 export { search };

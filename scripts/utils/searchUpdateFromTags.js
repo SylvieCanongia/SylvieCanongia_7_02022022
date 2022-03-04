@@ -8,7 +8,7 @@ import { updateFromTags } from './updateFromTags';
 /**
  * Updtade the recipes and the tags to display after a tag has been clicked
  */
-const searchUpdateFromTags = () => {
+const searchUpdateFromTags = (mainSearchRecipesToDisplay, recipesToDisplay) => {
     
     // Selects all the tags displayed in the 3 dropdowns
   const dropdownsTags = document.querySelectorAll('[data-dropdown-item]');
@@ -37,8 +37,7 @@ const searchUpdateFromTags = () => {
   for (const dropdownTag of dropdownsTags) {
 
     dropdownTag.addEventListener('click', (event) => {
-
-      updateFromTags(recipesData);
+      updateFromTags(recipesData, mainSearchRecipesToDisplay, recipesToDisplay);
     })
   }
 }

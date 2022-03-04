@@ -9,7 +9,7 @@ import { updateOnDeleteTag } from '../utils/updateOnDeleteTag';
  * @param { array } recipesToDisplay The array with the updated data of the recipes to display
  * When a tag is clicked in the dropdowns, displays it above the dropdowns
  */
-const tagSearch = (recipesToDisplay) => {
+const tagSearch = (recipesToDisplay, mainSearchRecipesToDisplay) => {
 
   // Selects all the inputs
   // const searchTagInputElements = document.querySelectorAll("[data-input]");
@@ -19,7 +19,7 @@ const tagSearch = (recipesToDisplay) => {
   let dropdownsTags = document.querySelectorAll('[data-dropdown-item]');
 
   const tagsContainerAboveDropdowns = document.querySelector('[data-tags-container]');
-  let tagsDisplayedAboveMenus = [];
+ 
   const tagTemplate = document.querySelector("[data-tag-template]");
 
   // Selects all the tag wrappers and the tags of the ingredients
@@ -191,7 +191,7 @@ const tagSearch = (recipesToDisplay) => {
                     // See if the recipe isn't already in the array 'newRecipesToDisplay' to avoid duplication
                     // if no, push the recipe into the array
                     pushIfNoDuplicate(recipesToDisplay, newRecipesToDisplay, indexOfIngredientTagToDisplay);
-                    // console.log(newRecipesToDisplay)
+
                     // for each ingredient element, checks if it's not already in the array ingredients tags
                     // to avoid displaying several times the same tag
                     // Then keeps only the ingredients tags that include the value entered in the input
@@ -221,8 +221,8 @@ const tagSearch = (recipesToDisplay) => {
       displayTagAboveDropdowns();
       // Then sorts the new recipes to display
       // and the tags to display in the dropdowns
-      searchUpdateFromTags();
-      updateOnDeleteTag();
+      searchUpdateFromTags(mainSearchRecipesToDisplay);
+      updateOnDeleteTag(mainSearchRecipesToDisplay, recipesToDisplay);
     });
 
       // Listen the inputs and get the value entered by the user
@@ -293,8 +293,8 @@ const tagSearch = (recipesToDisplay) => {
       displayTagAboveDropdowns();
       // Then sorts the new recipes to display
       // and the tags to display in the dropdowns
-      searchUpdateFromTags();
-      updateOnDeleteTag();
+      searchUpdateFromTags(mainSearchRecipesToDisplay);
+      updateOnDeleteTag(mainSearchRecipesToDisplay, recipesToDisplay);
     });
 
     // Listen the inputs and get the value entered by the user
@@ -369,13 +369,13 @@ const tagSearch = (recipesToDisplay) => {
       displayTagAboveDropdowns();
       // Then sorts the new recipes to display
       // and the tags to display in the dropdowns
-      searchUpdateFromTags();
-      updateOnDeleteTag();
+      searchUpdateFromTags(mainSearchRecipesToDisplay);
+      updateOnDeleteTag(mainSearchRecipesToDisplay, recipesToDisplay);
     });
 
   displayTagAboveDropdowns();
-  searchUpdateFromTags();
-  updateOnDeleteTag();
+  searchUpdateFromTags(mainSearchRecipesToDisplay);
+  updateOnDeleteTag(mainSearchRecipesToDisplay, recipesToDisplay);
 
 }
 
