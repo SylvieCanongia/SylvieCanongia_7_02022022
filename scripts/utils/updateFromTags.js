@@ -38,6 +38,7 @@ const updateFromTags = (recipesData) => {
         recipeCard(recipes);
         // The list of tags in each dropdown are also updated
         dropdowns(recipes);
+        tagSearch(recipes);
 
       } else {
         // Pushes all the tags's text of the actual displayed tags into this array
