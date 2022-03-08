@@ -3,13 +3,13 @@ import { recipes } from '../data/recipes';
 // import { dropdowns } from '../components/dropdowns';
 // import { tagSearch } from '../components/tagSearch';
 
-import { updateFromTags } from './updateFromTags';
+import { updateAfterSearchTag } from './updateAfterSearchTag';
 
 /**
- * Updtade the recipes and the tags to display after a tag has been clicked
+ * Update the recipes and the tags to display after a tag has been clicked
  */
-const searchUpdateFromTags = (mainSearchRecipesToDisplay, recipesToDisplay) => {
-    
+const searchOnTag = (mainSearchRecipesToDisplay, recipesToDisplay) => {
+    // console.log(recipesToDisplay)
     // Selects all the tags displayed in the 3 dropdowns
   const dropdownsTags = document.querySelectorAll('[data-dropdown-item]');
 
@@ -24,22 +24,25 @@ const searchUpdateFromTags = (mainSearchRecipesToDisplay, recipesToDisplay) => {
       .replace(/[\u0300-\u036f]/g, "")
   );
 
-  // Sorting will be on the properties 'name, ingredients and description'
+  // Sorting will be on the properties 'ingredients, appliance, ustensils'
   // So we delete all the others (except the id) to optimize the sorting
   for (let i = 0; i < recipesData.length; i++) {
+    delete recipesData[i].name;
+    delete recipesData[i].description;
     delete recipesData[i].servings;
     delete recipesData[i].time;
-    delete recipesData[i].appliance;
-    delete recipesData[i].ustensils;
+    // delete recipesData[i].appliance;
+    // delete recipesData[i].ustensils;
   }
 
   // Listen each click on a tag
   for (const dropdownTag of dropdownsTags) {
 
     dropdownTag.addEventListener('click', (event) => {
-      updateFromTags(recipesData, mainSearchRecipesToDisplay, recipesToDisplay);
-    })
+      event.stopPropagation();
+      updateAfterSearchTag(recipesData, mainSearchRecipesToDisplay, recipesToDisplay);
+    }, { once: true });
   }
 }
 
-export { searchUpdateFromTags };
+export { searchOnTag };

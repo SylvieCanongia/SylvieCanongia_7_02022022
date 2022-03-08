@@ -60,7 +60,7 @@ const search = (recipes) => {
       .replace(/[\u0300-\u036f]/g, "");
     let arrayOfValues = value.split(" ");
 
-    console.log(value)
+    // console.log(value)
     // empty the array to reset the displayed recipes
     recipesToDisplay = [];
 
@@ -148,7 +148,7 @@ const search = (recipes) => {
       // if entered value is < 3 chars, creates cards and displays all the recipes
       recipeCard(recipes);
       dropdowns(recipes);
-      tagSearch(recipes, mainSearchRecipesToDisplay);
+      tagSearch(recipes);
     }
   });
 

@@ -3,7 +3,7 @@ import { recipeCard } from '../templates/recipeCard';
 import { search } from "../components/search";
 import { dropdowns, manageDropdowns } from './../components/dropdowns';
 import { tagSearch } from '../components/tagSearch';
-import { searchUpdateFromTags } from '../utils/searchUpdateFromTags';
+import { searchUpdateFromTags } from '../utils/searchOnTag';
 
 const home = () => {
 // let recipesToDisplay = [];
@@ -16,7 +16,7 @@ const home = () => {
 
   // Manage the search in the main searchBar
   search(recipes, recipeCard);
-  tagSearch(recipes, recipeCard);
+  tagSearch(recipes);
 };
 
 home();

@@ -2,15 +2,16 @@ import { tagItem } from '../templates/tagItem';
 import { dropdownItem } from "../templates/dropdownsItem";
 import { recipeCard } from '../templates/recipeCard';
 import { dropdowns } from './dropdowns';
-import { searchUpdateFromTags } from '../utils/searchUpdateFromTags';
-import { updateOnDeleteTag } from '../utils/updateOnDeleteTag';
+import { searchOnTag } from '../utils/searchOnTag';
+import { deleteOnTag } from '../utils/deleteOnTag';
 
 /**
- * @param { array } recipesToDisplay The array with the updated data of the recipes to display
  * When a tag is clicked in the dropdowns, displays it above the dropdowns
+ * @param { array } recipesToDisplay The array with the updated data of the recipes to display
  */
-const tagSearch = (recipesToDisplay, mainSearchRecipesToDisplay) => {
-
+const tagSearch = (recipesToDisplay, mainSearchRecipesToDisplay = '') => {
+  // console.log(recipesToDisplay)
+  // console.log(mainSearchRecipesToDisplay);
   // Selects all the inputs
   // const searchTagInputElements = document.querySelectorAll("[data-input]");
   const ingredientsInputElement = document.querySelector('[data-ingredients-input');
@@ -221,8 +222,8 @@ const tagSearch = (recipesToDisplay, mainSearchRecipesToDisplay) => {
       displayTagAboveDropdowns();
       // Then sorts the new recipes to display
       // and the tags to display in the dropdowns
-      searchUpdateFromTags(mainSearchRecipesToDisplay);
-      updateOnDeleteTag(mainSearchRecipesToDisplay, recipesToDisplay);
+      searchOnTag(mainSearchRecipesToDisplay, recipesToDisplay);
+      deleteOnTag(mainSearchRecipesToDisplay, recipesToDisplay);
     });
 
       // Listen the inputs and get the value entered by the user
@@ -293,8 +294,8 @@ const tagSearch = (recipesToDisplay, mainSearchRecipesToDisplay) => {
       displayTagAboveDropdowns();
       // Then sorts the new recipes to display
       // and the tags to display in the dropdowns
-      searchUpdateFromTags(mainSearchRecipesToDisplay);
-      updateOnDeleteTag(mainSearchRecipesToDisplay, recipesToDisplay);
+      searchOnTag(mainSearchRecipesToDisplay);
+      deleteOnTag(mainSearchRecipesToDisplay, recipesToDisplay);
     });
 
     // Listen the inputs and get the value entered by the user
@@ -369,13 +370,13 @@ const tagSearch = (recipesToDisplay, mainSearchRecipesToDisplay) => {
       displayTagAboveDropdowns();
       // Then sorts the new recipes to display
       // and the tags to display in the dropdowns
-      searchUpdateFromTags(mainSearchRecipesToDisplay);
-      updateOnDeleteTag(mainSearchRecipesToDisplay, recipesToDisplay);
+      searchOnTag(mainSearchRecipesToDisplay, recipesToDisplay);
+      deleteOnTag(mainSearchRecipesToDisplay, recipesToDisplay);
     });
 
   displayTagAboveDropdowns();
-  searchUpdateFromTags(mainSearchRecipesToDisplay);
-  updateOnDeleteTag(mainSearchRecipesToDisplay, recipesToDisplay);
+  searchOnTag(mainSearchRecipesToDisplay, recipesToDisplay);
+  deleteOnTag(mainSearchRecipesToDisplay, recipesToDisplay);
 
 }
 
