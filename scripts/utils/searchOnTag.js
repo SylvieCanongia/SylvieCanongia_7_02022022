@@ -1,7 +1,4 @@
 import { recipes } from '../data/recipes';
-// import { recipeCard } from "../templates/recipeCard";
-// import { dropdowns } from '../components/dropdowns';
-// import { tagSearch } from '../components/tagSearch';
 
 import { updateAfterSearchTag } from './updateAfterSearchTag';
 
@@ -9,7 +6,7 @@ import { updateAfterSearchTag } from './updateAfterSearchTag';
  * Update the recipes and the tags to display after a tag has been clicked
  */
 const searchOnTag = (mainSearchRecipesToDisplay, recipesToDisplay) => {
-    // console.log(recipesToDisplay)
+  
     // Selects all the tags displayed in the 3 dropdowns
   const dropdownsTags = document.querySelectorAll('[data-dropdown-item]');
 
@@ -24,15 +21,12 @@ const searchOnTag = (mainSearchRecipesToDisplay, recipesToDisplay) => {
       .replace(/[\u0300-\u036f]/g, "")
   );
 
-  // Sorting will be on the properties 'ingredients, appliance, ustensils'
-  // So we delete all the others (except the id) to optimize the sorting
+  // We delete all the properties we don't need (except the id) to optimize the sorting
   for (let i = 0; i < recipesData.length; i++) {
     delete recipesData[i].name;
     delete recipesData[i].description;
     delete recipesData[i].servings;
     delete recipesData[i].time;
-    // delete recipesData[i].appliance;
-    // delete recipesData[i].ustensils;
   }
 
   // Listen each click on a tag

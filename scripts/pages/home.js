@@ -6,7 +6,6 @@ import { tagSearch } from '../components/tagSearch';
 import { searchUpdateFromTags } from '../utils/searchOnTag';
 
 const home = () => {
-// let recipesToDisplay = [];
 
   // Create the recipe cards with the data of the array 'recipes'
   // and display them on the home page

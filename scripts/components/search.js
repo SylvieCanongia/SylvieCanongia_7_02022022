@@ -53,6 +53,7 @@ const search = (recipes) => {
   // We listen to the input and update results for each char > 3 typed
   // The items of the dropdowns are also updated at the same time
   searchInputElement.addEventListener("input", (event) => {
+
     // Sets uppercase characters to lowercase and remove accents / diacritics
     const value = event.target.value
       .toLowerCase()
@@ -60,13 +61,12 @@ const search = (recipes) => {
       .replace(/[\u0300-\u036f]/g, "");
     let arrayOfValues = value.split(" ");
 
-    // console.log(value)
     // empty the array to reset the displayed recipes
     recipesToDisplay = [];
 
     if (value.length >= 3) {
       for (let i = 0; i < recipesData.length; i++) {
-      
+
         // Loop on each value of the arrayOfValues to see if the value is
         // in the recipe's name, ingredients or description
         LoopOnValues: for (const valueElement of arrayOfValues) {
@@ -131,7 +131,7 @@ const search = (recipes) => {
 
       // The array of recipes for the search by tag is updated
       let mainSearchRecipesToDisplay = [...recipesToDisplay];
-      
+
       // console.log(recipesToDisplay, mainSearchRecipesToDisplay)
 
       // Creates the cards of the filtered recipes and displays them
@@ -140,7 +140,7 @@ const search = (recipes) => {
       // The list of tags in each dropdown are also updated
       dropdowns(recipesToDisplay);
 
-      
+
 
       tagSearch(recipesToDisplay, mainSearchRecipesToDisplay);
 

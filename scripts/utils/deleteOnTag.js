@@ -2,14 +2,10 @@ import { recipes } from "../data/recipes";
 import { updateAfterDeleteTag } from "./updateAfterDeleteTag";
 
 const deleteOnTag = (mainSearchRecipesToDisplay, recipesToDisplay) => {
-// console.log(recipesToDisplay)
-// console.log(mainSearchRecipesToDisplay)
-  // Selects all the tags elements displayed above the dropdowns
-  //  to have an updated array of the last tags selected
-  // const selectedTagsElements = document.querySelectorAll('[data-tag]');
+
+  // Selects all the crosses of the tags elements displayed above the dropdowns
   const iconsDelete = document.querySelectorAll('[data-icon-delete]');
 
-  // console.log(iconsDelete)
    // Create the base array of data 'recipesData' from the data of the recipes
   // .toLowerCase => lowercase for all terms
   // .normalize and .replace => remove all the accents / diacritics
@@ -32,8 +28,6 @@ const deleteOnTag = (mainSearchRecipesToDisplay, recipesToDisplay) => {
 
   for (const iconDelete of iconsDelete) {
     iconDelete.addEventListener('click', (event) => {
-      // console.log(event.currentTarget)
-      // console.log(event.target)
       
       event.stopPropagation();
       
@@ -42,7 +36,6 @@ const deleteOnTag = (mainSearchRecipesToDisplay, recipesToDisplay) => {
       updateAfterDeleteTag(recipesData, mainSearchRecipesToDisplay, recipesToDisplay);
     });
   }
-
 }
 
 export { deleteOnTag }
