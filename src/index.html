@@ -19,9 +19,12 @@
     ></script>
 
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Lato:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Lato:wght@400;700&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
     <!-- Bootstrap icons -->
     <link
       rel="stylesheet"
@@ -47,27 +50,29 @@
 
     <!-- ======= Main ======= -->
     <main class="main-home">
-
       <!-- Search section -->
       <section class="search">
         <div class="container">
-
           <!-- Search bar -->
           <div class="search__bar row">
             <form class="search__form">
-              <div class="input-group mb-3">
+              <div
+                class="input-group mb-3"
+                data-error
+                data-error-visible="false"
+              >
                 <input
-                  id='search'
+                  id="search"
                   class="form-control"
                   type="search"
                   placeholder="Rechercher une recette"
                   aria-label="Search"
                   data-search
-                  minlength = "3"
+                  minlength="3"
+                  required
                 />
                 <label for="search" class="input-group-text">
-                  <i class="bi bi-search" aria-label="Search"
-                  role="img"></i>
+                  <i class="bi bi-search" aria-label="Search" role="img"></i>
                 </label>
               </div>
             </form>
@@ -76,81 +81,78 @@
 
           <!-- Dropdowns -->
           <div class="search__dropdowns row pb-3">
-            <div class="tags">
-              <div class="tag d-flex justify-content-beetween">Coco<i class="bi bi-x-circle"></i></div>
-            </div>
-            <div class="dropdown" aria-label="Recherche par tag">
-              <button
-                class="btn btn__ingredients btn-sm dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Ingrédients
-              </button>
-              <ul
-                class="btn__ingredients__list dropdown-menu dropdown-menu-dark"
-                aria-labelledby="dropdownMenuButton"
-                
-              >
-                <div class="row row-cols-3" data-ingredients-list>
-                  <div class="col">
-                    <li>
-                      <a class="dropdown-item active" href="#">Lait de coco</a>
-                    </li>
+            <!-- Container to display the selected tags from the dropdowns -->
+            <div class="tags d-flex flex-wrap gap-2 mt-2 mb-2" data-tags-container></div>
+            <div class="search__dropdown d-flex flex-wrap gap-3" aria-label="Recherche par tag">
+              <div class="dropdown__input_wrapper" tabindex="-1">
+                <input
+                  class="btn btn__ingredients btn-sm dropdown_toggle dropdown__input placeholderColor"
+                  type="text"
+                  placeholder="Ingrédients"
+                  data-placeholder="Ingrédients"
+                  data-placeholder-expanded = "ingredient"
+                  id="dropdownMenuBtnIng"
+                  aria-expanded="false"
+                  data-ingredients-input
+                  data-input
+                />
+                <span class="arrowBox" data-arrowBox><i class="arrow arrow-down" aria-label="Choisir un ingrédient" tabindex='0' data-arrow></i></span>
+                <ul
+                  class="btn__ingredients__list dropdown__menu"
+                  aria-labelledby="dropdownMenuBtnIng"
+                  data-dropdown-list
+                >
+                  <div class="row row-cols-3" data-ingredients-list data-list>
                   </div>
-                </div>
-              </ul>
-
-              <button
-                class="btn btn__appareils btn-sm dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Appareils
-              </button>
-              <ul
-                class="btn__appareils__list dropdown-menu dropdown-menu-dark"
-                aria-labelledby="dropdownMenuButton"
-              >
-              <div class="row row-cols-3" data-appliance-list>
-                <div class="col">
-                  <li>
-                    <a class="dropdown-item active" href="#">Lait de coco</a>
-                  </li>
-                </div>
+                </ul>
               </div>
-              </ul>
-
-              <button
-                class="btn btn__ustensiles btn-sm dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Ustensiles
-              </button>
-              <ul
-                class="btn__ustensiles__list dropdown-menu dropdown-menu-dark"
-                aria-labelledby="dropdownMenuButton"
-                
-              >
-              <div class="row row-cols-3" data-ustensils-list>
-                <div class="col">
-                  <li>
-                    <a class="dropdown-item active" href="#">Lait de coco</a>
-                  </li>
-                </div>
+              <div class="dropdown__input_wrapper" tabindex="-1">
+                <input
+                  class="btn btn__appliance btn-sm dropdown_toggle dropdown__input placeholderColor"
+                  type="text"
+                  placeholder="Appareils"
+                  data-placeholder="Appareils"
+                  data-placeholder-expanded = "appareil"
+                  id="dropdownMenuBtnApp"
+                  aria-expanded="false"
+                  data-appliance-input
+                  data-input
+                />
+                <span class="arrowBox" data-arrowBox><i class="arrow arrow-down" aria-label="Choisir un appareil" tabindex='0' data-arrow></i></span>
+                <ul
+                  class="btn__appliance__list dropdown__menu"
+                  aria-labelledby="dropdownMenuBtnApp"
+                  data-dropdown-list
+                >
+                  <div class="row row-cols-3" data-appliance-list data-list>
+                  </div>
+                </ul>
               </div>
-              </ul>
+              <div class="dropdown__input_wrapper" tabindex="-1">
+                <input
+                  class="btn btn__ustensils btn-sm dropdown_toggle dropdown__input placeholderColor"
+                  type="text"
+                  placeholder="Ustensiles"
+                  data-placeholder="Ustensiles"
+                  data-placeholder-expanded = "ustensile"
+                  id="dropdownMenuBtnUst"
+                  aria-expanded="false"
+                  data-ustensils-input
+                  data-input
+                />
+                <span class="arrowBox" data-arrowBox><i class="arrow arrow-down" aria-label="Choisir un ustensile" tabindex='0' data-arrow></i></span>
+                <ul
+                  class="btn__ustensils__list dropdown__menu"
+                  aria-labelledby="dropdownMenuBtnUst"
+                  data-dropdown-list
+                >
+                  <div class="row row-cols-3" data-ustensils-list data-list>
+                  </div>
+                </ul>
+              </div>
             </div>
           </div>
           <!-- End dropdowns -->
-
         </div>
       </section>
       <!-- End search section -->
@@ -158,10 +160,10 @@
       <!-- Recipes section -->
       <section class="recipes">
         <div class="recipes__container container">
-          <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4" data-cards-container>
-        
-
-          </div>
+          <div
+            class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4"
+            data-cards-container
+          ></div>
         </div>
       </section>
       <!-- End recipes section -->
@@ -173,34 +175,51 @@
     <footer class="footer"></footer>
     <!-- ======= Footer ======= -->
 
+    <!-- TEMPLATES -->
+    <!-- recipe card template -->
     <template data-card-template>
       <!-- Card -->
       <div class="col">
         <div class="recipe card h-100">
-          <img src="#" class="card-img-top" alt="" data-image/>
+          <img src="#" class="card-img-top" alt="" data-image />
           <div class="card-body">
             <div class="d-flex flex-row justify-content-between">
               <h2 class="card-title" data-name></h2>
               <div class="d-flex">
-                <i class="recipe__iconClock bi bi-clock" role="img" aria-label="Time"></i>
+                <i
+                  class="recipe__iconClock bi bi-clock"
+                  role="img"
+                  aria-label="Time"
+                ></i>
                 <span data-time-container><span data-time></span> min</span>
               </div>
             </div>
             <div class="recipe__content row">
-              <ul class="list-unstyled col-6" data-ingredients>
-                
-              </ul>
-              <p class="recipe__desc card-text col-6" data-description>
-              </p>
+              <ul class="list-unstyled col-6" data-ingredients></ul>
+              <p class="recipe__desc card-text col-6" data-description></p>
             </div>
           </div>
         </div>
       </div>
       <!-- End card -->
     </template>
-     <template data-li-template>
-      <li><span data-ingredient></span><span data-colons> : </span><span data-quantity></span><span data-unit></span></li>
+    <!-- recipe card template -->
+
+    <!-- Ingredient item of the recipe card template -->
+    <template data-recipe-li-template>
+      <li>
+        <span data-ingredient></span><span data-colons> : </span
+        ><span data-quantity></span><span data-unit></span>
+      </li>
     </template>
+    <!-- End of ingredient item of the recipe card template -->
+    <!-- template of the tag displayed above the dropdowns -->
+    <template data-tag-template>
+      <div class="tag d-flex justify-content-beetween" data-tag>
+        <div></div><i class="bi bi-x-circle" tabindex="0" aria-label="Supprimer le tag" data-icon-delete></i>
+      </div>
+    </template>
+
 
     <!-- pages -->
     <script type="module" src="./index.js"></script>

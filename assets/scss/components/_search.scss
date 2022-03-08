@@ -6,6 +6,29 @@
       height: $space-base * 7;
     }
 
+    /* Error messages */
+
+    [data-error]::after {
+      content: attr(data-error);
+      font-size: $font-size-normal * 0.7;
+      color: $color-error;
+      display: block;
+      margin-top: $space-base;
+      margin-bottom: $space-base;
+      line-height: 0.9;
+      opacity: 0;
+      transition: 0.3s;
+    }
+
+    [data-error-visible="true"]::after {
+      opacity: 1;
+    }
+
+    [data-error-visible="true"] .form-control {
+      border: 2px solid $color-error;
+    }
+    /* End error messages */
+
     .form-control::placeholder {
       color: $color-placeholder;
     }

@@ -1,0 +1,38 @@
+// Custom styles on the dropdowns placeholders
+
+$color-placeholder-blue: lighten($color-blue, 25%);
+$color-placeholder-green: lighten($color-green, 25%);
+$color-placeholder-red: lighten($color-red, 25%);
+
+$customPlaceholder: (
+  "ingredients": (
+    "color": $color-placeholder-blue,
+    "font-weight": $font-weight-bold,
+    "font-size": $font-size-normal * 1.125,
+    "font-family": $font-family-ingredients,
+  ),
+  "appliance": (
+    "color": $color-placeholder-green,
+    "font-weight": $font-weight-bold,
+    "font-size": $font-size-normal * 1.125,
+    "font-family": $font-family-ingredients,
+  ),
+  "ustensils": (
+    "color": $color-placeholder-red,
+    "font-weight": $font-weight-bold,
+    "font-size": $font-size-normal * 1.125,
+    "font-family": $font-family-ingredients,
+  ),
+);
+
+@mixin customPlaceholder($state) {
+  $palette: map-get($customPlaceholder, $state);
+  $color: map-get($palette, "color");
+  $font-weight: map-get($palette, "font-weight");
+  $font-size: map-get($palette, "font-size");
+  $font-family: map-get($palette, "font-family");
+  color: $color;
+  font-weight: $font-weight;
+  font-size: $font-size;
+  font-family: $font-family;
+}
