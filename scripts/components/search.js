@@ -41,6 +41,7 @@ const search = (recipes) => {
       .replace(/[\u0300-\u036f]/g, "")
   );
 
+
   // Sorting will be on the properties 'name, ingredients and description'
   // So we delete all the others (except the id) to optimize the sorting
   for (let i = 0; i < recipesData.length; i++) {
@@ -50,84 +51,56 @@ const search = (recipes) => {
     delete recipesData[i].ustensils;
   }
 
+  console.log(recipesData)
+
+  // Concatenete all the name, ingredients and description contents
+  const recipesConcat = recipesData.map((recipe) => {
+
+    // 1. Gives access to each ingredient in the 'ingredients' property
+    // and remove the spaces inside each ingredient's name
+    let ingredientsTerms = recipe.ingredients.map(e => e = (e.ingredient.split(' ').join('')));
+
+    // 2. Then concatenete the name, ingredientsTerms and description for each recipe
+    // and remove the spaces and the ,.;:'()- characters with a regex
+    concatTerms = recipe.name.concat(ingredientsTerms).concat(recipe.description).replace(/[\,.;:'()-\s+]/g, '');
+
+    return { id: recipe.id, stringToCheck: concatTerms }
+  });
+
   // We listen to the input and update results for each char > 3 typed
   // The items of the dropdowns are also updated at the same time
   searchInputElement.addEventListener("input", (event) => {
 
     // Sets uppercase characters to lowercase and remove accents / diacritics
     const value = event.target.value
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "");
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
     let arrayOfValues = value.split(" ");
 
     // empty the array to reset the displayed recipes
     recipesToDisplay = [];
 
     if (value.length >= 3) {
-      for (let i = 0; i < recipesData.length; i++) {
+      Object.entries(recipesConcat).forEach(recipe => {
 
         // Loop on each value of the arrayOfValues to see if the value is
         // in the recipe's name, ingredients or description
-        LoopOnValues: for (const valueElement of arrayOfValues) {
+        arrayOfValues.forEach( (valueElement) => {
           if (valueElement !== "") {
-            // ==== Search on the name ====
-            const isVisibleByName = recipesData[i].name.includes(valueElement);
-
-            // if the value is found in the name, find the matching recipe in the array of object 'recipes'
-            // via the matching id of the recipe
-            if (isVisibleByName) {
+            const isVisible = recipe[1].stringToCheck.includes(valueElement);
+            if(isVisible) {
               const indexOfRecipeToDisplay = recipes.findIndex(
-                (el) => el.id == recipesData[i].id
+                (el) => el.id == recipe[1].id
               );
 
               // See if the recipe isn't already in the array recipesToDisplay to avoid duplication
               // if no, push the recipe into the array
               pushIfNoDuplicate(recipes, recipesToDisplay, indexOfRecipeToDisplay);
-
-              continue LoopOnValues;
-            }
-
-            // ==== Search on the ingredients ====
-
-            for (const ingredientElement of recipesData[i].ingredients) {
-              // Concat all the terms ingredient, quantity and unit
-              let ingredientTerms = ingredientElement.ingredient
-
-              const isVisibleByIngredient = ingredientTerms.includes(valueElement);
-
-              if (isVisibleByIngredient) {
-                const indexOfRecipeToDisplay = recipes.findIndex((el) => el.id == recipesData[i].id);
-
-                // See if the recipe isn't already in the array recipesToDisplay to avoid duplication
-                // if no, push the recipe into the array
-                pushIfNoDuplicate(recipes, recipesToDisplay, indexOfRecipeToDisplay);
-
-                continue LoopOnValues;
-              }
-            }
-
-            // ==== Search on the description ====
-
-            const isVisibleByDescription =
-              recipesData[i].description.includes(valueElement);
-
-            // if the value is found in the name, find the matching recipe in the array of object 'recipes'
-            // via the matching id of the recipe
-            if (isVisibleByDescription) {
-              const indexOfRecipeToDisplay = recipes.findIndex(
-                (el) => el.id == recipesData[i].id
-              );
-
-              // See if the recipe isn't already in the array recipesToDisplay to avoid duplication
-              // if no, push the recipe into the array
-              pushIfNoDuplicate(recipes, recipesToDisplay, indexOfRecipeToDisplay);
-
-              continue LoopOnValues;
             }
           }
-        }
-      }
+        })
+      })
 
       // The array of recipes for the search by tag is updated
       let mainSearchRecipesToDisplay = [...recipesToDisplay];
@@ -140,18 +113,14 @@ const search = (recipes) => {
       // The list of tags in each dropdown are also updated
       dropdowns(recipesToDisplay);
 
-
-
       tagSearch(recipesToDisplay, mainSearchRecipesToDisplay);
-
     } else {
       // if entered value is < 3 chars, creates cards and displays all the recipes
       recipeCard(recipes);
       dropdowns(recipes);
       tagSearch(recipes);
     }
-  });
-
+  })
 };
 
 export { search };
