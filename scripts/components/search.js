@@ -14,14 +14,13 @@ const search = (recipes) => {
   const searchInputElement = document.querySelector("[data-search]");
 
   /**
-   *
+   * See if the recipe isn't already in the array recipesToDisplay to avoid duplication
+   * if no, push the recipe into the array
    * @param { array } recipes Array from which are taken the data of the recipes via their id
    * @param { array } recipesToDisplay Recipes to display after sorting of the recipes from the main Search
    * @param { number } indexOfRecipeToDisplay The index of the recipe to display
    */
   const pushIfNoDuplicate = (recipes, recipesToDisplay, indexOfRecipeToDisplay) => {
-    // See if the recipe isn't already in the array recipesToDisplay to avoid duplication
-    // if no, push the recipe into the array
     if (!recipesToDisplay.includes(recipes[indexOfRecipeToDisplay])) {
       recipesToDisplay.push(recipes[indexOfRecipeToDisplay]);
     }
