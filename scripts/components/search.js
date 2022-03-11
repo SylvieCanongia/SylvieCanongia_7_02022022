@@ -101,8 +101,8 @@ const search = (recipes) => {
               pushIfNoDuplicate(recipes, recipesToDisplay, indexOfRecipeToDisplay);
             }
           }
-        })
-      })
+        });
+      });
 
       // The array of recipes to memorize for the search by tag is updated
       let mainSearchRecipesToDisplay = [...recipesToDisplay];
@@ -121,7 +121,7 @@ const search = (recipes) => {
       dropdowns(recipes);
       tagSearch(recipes);
     }
-  })
-};
+  });
+}
 
 export { search };
