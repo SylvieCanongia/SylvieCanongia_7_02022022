@@ -12,6 +12,7 @@ import { tagSearch } from './tagSearch';
  */
 const search = (recipes) => {
   const searchInputElement = document.querySelector("[data-search]");
+  const noRecipeElement = document.querySelector('[data-noRecipe]');
 
   /**
    * See if the recipe isn't already in the array recipesToDisplay to avoid duplication
@@ -131,18 +132,20 @@ const search = (recipes) => {
       // The array of recipes for the search by tag is updated
       let mainSearchRecipesToDisplay = [...recipesToDisplay];
 
-      // console.log(recipesToDisplay, mainSearchRecipesToDisplay)
+      // If no recipe matches the search and so the array recipesToDisplay is empty
+      // displays a message
+      if (recipesToDisplay.length === 0) {
+        noRecipeElement.style.display = 'block';
+        document.querySelector('[data-cards-container]').innerHTML = '';
+      } else {
+        // Creates the cards of the filtered recipes and displays them
+        recipeCard(recipesToDisplay);
 
-      // Creates the cards of the filtered recipes and displays them
-      recipeCard(recipesToDisplay);
+        // The list of tags in each dropdown are also updated
+        dropdowns(recipesToDisplay);
 
-      // The list of tags in each dropdown are also updated
-      dropdowns(recipesToDisplay);
-
-
-
-      tagSearch(recipesToDisplay, mainSearchRecipesToDisplay);
-
+        tagSearch(recipesToDisplay, mainSearchRecipesToDisplay);
+      }
     } else {
       // if entered value is < 3 chars, creates cards and displays all the recipes
       recipeCard(recipes);
@@ -150,7 +153,6 @@ const search = (recipes) => {
       tagSearch(recipes);
     }
   });
-
 };
 
 export { search };
