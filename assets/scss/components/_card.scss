@@ -1,4 +1,11 @@
 .recipes {
+
+  [data-noRecipe] {
+    display: none;
+    font-size: $font-size-normal * 1.3;
+    margin-block: $space-M;
+  }
+  
   .recipe {
     [data-image] {
       background: $color-grey-img;
